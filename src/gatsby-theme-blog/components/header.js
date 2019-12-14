@@ -8,25 +8,6 @@ import sun from "../../../content/assets/sun.png"
 import moon from "../../../content/assets/moon.png"
 const rootPath = `${__PATH_PREFIX__}/`
 
-{
-  /* <a
-            // as={Link}
-            css={css({
-              variant: "styles.a",
-              boxSizing: "border-box",
-    minWidth: "0px",
-    display: "inline-block",
-    fontWeight: 700,
-    margin: "0px",
-    textDecoration: "none",
-    padding: "8px"
-            })}
-            to={`/projects`}
-          >
-            Test
-          </a> */
-}
-
 const NavLink = props => {
   return (
     <Link
@@ -46,52 +27,6 @@ const NavLink = props => {
       {props.children}
     </Link>
   )
-}
-
-const Title = ({ children, location }) => {
-  if (location.pathname === rootPath) {
-    return (
-      <Styled.h1
-        css={css({
-          my: 0,
-          fontSize: 4,
-        })}
-      >
-        <Styled.a
-          as={Link}
-          css={css({
-            color: `inherit`,
-            boxShadow: `none`,
-            textDecoration: `none`,
-          })}
-          to={`/`}
-        >
-          {children}
-        </Styled.a>
-      </Styled.h1>
-    )
-  } else {
-    return (
-      <Styled.h3
-        as="p"
-        css={css({
-          my: 0,
-        })}
-      >
-        <Styled.a
-          as={Link}
-          css={css({
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `primary`,
-          })}
-          to={`/`}
-        >
-          {children}
-        </Styled.a>
-      </Styled.h3>
-    )
-  }
 }
 
 const iconCss = [
@@ -130,43 +65,13 @@ export default ({ children, title, ...props }) => {
     setColorMode(isDark ? `light` : `dark`)
   }
 
-  // return (
-  //   <header
-  //   >
-  //     <div
-  //       css={css({
-  //         maxWidth: `container`,
-  //         mx: `auto`,
-  //         px: 3,
-  //         pt: 4,
-  //       })}
-  //     >
-  //       <div
-  //         css={css({
-  //           display: `flex`,
-  //           justifyContent: `space-between`,
-  //           alignItems: `center`,
-  //           mb: 4,
-  //         })}
-  //       >
-  //         <Title {...props}>{title}</Title>
-  //         {children}
-
-  //         <Switch
-  //           aria-label="Toggle dark mode"
-  //           checkedIcon={checkedIcon}
-  //           uncheckedIcon={uncheckedIcon}
-  //           checked={isDark}
-  //           onChange={toggleColorMode}
-  //         />
-  //       </div>
-  //       {props.location.pathname === rootPath && <Bio />}
-  //       <div css={css({ variant: "styles.hr" })} />
-  //     </div>
-  //   </header>
-  // )
   return (
     <header
+    sx={{
+      background: "#e0e0e0"
+      }}
+    >
+      <div
       sx={{
         display: "grid",
         gridGap: 3,
@@ -177,8 +82,7 @@ export default ({ children, title, ...props }) => {
         gridAutoFlow: "row",
         gridTemplateColumns: ["repeat(2, 1fr)", "repeat(3, 1fr)"],
         variant: "styles.header",
-      }}
-    >
+      }}>
       <div
         sx={{
           display: "flex",
@@ -234,6 +138,7 @@ export default ({ children, title, ...props }) => {
           checked={isDark}
           onChange={toggleColorMode}
         />
+      </div>
       </div>
     </header>
   )

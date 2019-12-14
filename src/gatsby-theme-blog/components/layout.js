@@ -1,11 +1,12 @@
 import React from "react"
 import { css, Styled } from "theme-ui"
 import Header from "./header"
+import Footer from "./footer"
 
 export default ({ children, ...props }) => (
   <Styled.root>
     <Header {...props} />
-    <hr />
+    <Styled.hr css={css({ m: 0 })} />
 
     <div>
       <div
@@ -19,8 +20,7 @@ export default ({ children, ...props }) => (
         {children}
       </div>
     </div>
-
-    <hr />
-    {/* <Footer socialLinks={socialLinks} /> */}
+    <Styled.hr css={css({ m: 0 })} />
+    <Footer />
   </Styled.root>
 )

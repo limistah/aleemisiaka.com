@@ -89,7 +89,7 @@ export default ({ children, title, ...props }) => {
           <Link to="/" title="Home">
             <img
               alt="UI Logo"
-              src="https://contrast.now.sh/cff/40f?size=48&fontSize=2&baseline=2&fontWeight=900&radius=32&text=UI"
+              src="https://contrast.now.sh/fff/663399?size=48&fontSize=2&baseline=2&fontWeight=900&radius=32&text=AI&"
             />
             <span
               sx={{

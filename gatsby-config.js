@@ -2,7 +2,7 @@ module.exports = {
   plugins: [
     {
       resolve: `gatsby-theme-blog`,
-      options: { basePath: "/blog", rootPath: "/blog" },
+      options: { basePath: "/blog", rootPath: "/" },
     },
   ],
   // Customize your site metadata:

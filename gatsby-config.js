@@ -4,6 +4,12 @@ module.exports = {
       resolve: `gatsby-theme-blog`,
       options: { basePath: "/blog", rootPath: "/" },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/assets`,
+      },
+    },
   ],
   // Customize your site metadata:
   siteMetadata: {

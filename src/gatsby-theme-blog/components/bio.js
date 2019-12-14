@@ -15,7 +15,7 @@ const Bio = () => {
   const data = useStaticQuery(bioQuery)
   const {
     site: {
-      siteMetadata: { author },
+      siteMetadata: { author, authorBio },
     },
     avatar,
   } = data
@@ -47,7 +47,7 @@ const Bio = () => {
         />
       )}
       <Styled.div>
-        <BioContent />
+        <BioContent author={author} authorBio={authorBio} />
       </Styled.div>
     </Flex>
   )
@@ -58,6 +58,7 @@ const bioQuery = graphql`
     site {
       siteMetadata {
         author
+        authorBio
       }
     }
     avatar: file(absolutePath: { regex: "/avatar.(jpeg|jpg|gif|png)/" }) {

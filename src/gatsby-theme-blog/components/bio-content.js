@@ -5,10 +5,11 @@ import { Styled } from "theme-ui"
  * Shadow me to add your own bio content
  */
 
-export default () => (
+export default ({ author, authorBio }) => (
   <Fragment>
-    Words by <Styled.a href="http://example.com/">Jane Doe</Styled.a>.
+    With 💗 by <Styled.a href="http://aleemisiaka.com/about">{author}</Styled.a>
+    .
     <br />
-    Change me. This is all quite default.
+    {authorBio}
   </Fragment>
 )

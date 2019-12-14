@@ -2,13 +2,14 @@ module.exports = {
   plugins: [
     {
       resolve: `gatsby-theme-blog`,
-      options: { basePath: "blog" },
+      options: { basePath: "/blog", rootPath: "/blog" },
     },
   ],
   // Customize your site metadata:
   siteMetadata: {
-    title: `Aleem Isiaka`,
-    author: `Aleem Isika`,
+    title: `AI`,
+    author: `Aleem Isiaka`,
+    authorBio: `Double Engineer >>> Software & Machines | Student & Learner`,
     description: `Double Engineer >>> Software & Machines | Student & Learner`,
     social: [
       {

@@ -15,47 +15,50 @@ export default () => {
   } = data
   return (
     <Layout>
-      <Styled.div>
+      <Styled.div css={css({ textAlign: "center" })}>
+        <Image
+          fixed={authorPhoto.childImageSharp.fixed}
+          alt={author}
+          css={css({
+            mr: 2,
+            mb: 0,
+            width: 48,
+            minWidth: 48,
+            borderRadius: 99999,
+          })}
+        />
+        <Styled.p css={css({ fontSize: "30", textAlign: "center" })}>
+          Hi, I'm <strong css={css({ color: "primary" })}>Aleem Isiaka</strong>,
+          a{" "}
+          <span css={css({ textDecoration: "underline" })}>
+            software developer
+          </span>{" "}
+          and <span css={css({ textDecoration: "underline" })}>blogger.</span>
+        </Styled.p>
+
         <Styled.p css={css({ textAlign: "center" })}>
-          <Image
-            fixed={authorPhoto.childImageSharp.fixed}
-            alt={author}
+          <Styled.a
+            as={Link}
             css={css({
-              mr: 2,
-              mb: 0,
-              width: 48,
-              minWidth: 48,
-              borderRadius: 99999,
+              textDecoration: "none",
+              mb: 3,
+              border: "2px solid darkslategrey",
+              p: 2,
+              borderRadius: "3px",
             })}
-          />
-          <Styled.p css={css({ fontSize: "52px", textAlign: "center" })}>
-            Hi, I'm{" "}
-            <strong css={css({ color: "primary" })}>Aleem Isiaka</strong>, a{" "}
-            <span css={css({ textDecoration: "underline" })}>
-              software developer
-            </span>{" "}
-            and <span css={css({ textDecoration: "underline" })}>blogger.</span>
-          </Styled.p>
+            to="/about"
+          >
+            Read More...
+          </Styled.a>
+        </Styled.p>
 
-          <Styled.p css={css({ textAlign: "center" })}>
-            <Styled.a
-              as={Link}
-              css={css({ textDecoration: "none", mb: 3, border: "2px solid darkslategrey", p: 2, borderRadius: "3px"})}
-              to="/about"
-            >
-              Read More...
-            </Styled.a>
-          </Styled.p>
-
-          <Styled.p css={css({ textAlign: "center" })}>
-
+        <Styled.p css={css({ textAlign: "center" })}>
           Follow me:{" "}
-            {social.map(details => (
-              <a href={details.url} key={details.name}>
-                {details.name}{" "}
+          {social.map(details => (
+            <a href={details.url} key={details.name}>
+              {details.name}{" "}
             </a>
-            ))}
-          </Styled.p>
+          ))}
         </Styled.p>
       </Styled.div>
     </Layout>

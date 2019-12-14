@@ -16,7 +16,14 @@ const Posts = ({ location, posts, siteTitle, socialLinks }) => (
         return (
           <Fragment key={node.slug}>
             <SEO title="Home" keywords={keywords} />
-            <div>
+            <div
+              css={css({
+                border: "1px solid slategray",
+                p: 2,
+                mb: 2,
+                borderRadius: "7px",
+              })}
+            >
               <Styled.h2
                 css={css({
                   mb: 1,

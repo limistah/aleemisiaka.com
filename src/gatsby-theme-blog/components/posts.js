@@ -12,6 +12,7 @@ const Posts = ({ location, posts, siteTitle, socialLinks }) => (
       {posts.map(({ node }) => {
         const title = node.title || node.slug
         const keywords = node.keywords || []
+        console.log(node)
         return (
           <Fragment key={node.slug}>
             <SEO title="Home" keywords={keywords} />
@@ -32,6 +33,7 @@ const Posts = ({ location, posts, siteTitle, socialLinks }) => (
                 </Styled.a>
               </Styled.h2>
               <small>{node.date}</small>
+              <small>{node.category}</small>
               <Styled.p>{node.excerpt}</Styled.p>
             </div>
           </Fragment>

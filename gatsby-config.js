@@ -2,14 +2,14 @@ module.exports = {
   plugins: [
     {
       resolve: `gatsby-theme-blog`,
-      options: {},
+      options: { basePath: "blog" },
     },
   ],
   // Customize your site metadata:
   siteMetadata: {
-    title: `Self Taught Co.de`,
+    title: `Aleem Isiaka`,
     author: `Aleem Isika`,
-    description: `My site description...`,
+    description: `Double Engineer >>> Software & Machines | Student & Learner`,
     social: [
       {
         name: `twitter`,

@@ -78,7 +78,7 @@ const indexQuery = graphql`
     }
     authorPhoto: file(absolutePath: { regex: "/author.(jpeg|jpg|gif|png)/" }) {
       childImageSharp {
-        fixed(width: 300, height: 300) {
+        fixed(width: 200, height: 200) {
           ...GatsbyImageSharpFixed
         }
       }

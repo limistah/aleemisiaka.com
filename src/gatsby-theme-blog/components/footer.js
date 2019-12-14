@@ -12,8 +12,7 @@ const Footer = () => {
         alignItems: "center",
         justifyContent: "center",
         p: 2,
-        variant: "styles.footer",
-        background: "#e0e0e0",
+        variant: "styles.footer"
       }}
     >
       <NavLink to="/">Home</NavLink>

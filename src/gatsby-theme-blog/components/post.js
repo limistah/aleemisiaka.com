@@ -30,6 +30,8 @@ const Post = ({
       >
         {post.date}
       </Styled.p>
+
+      <Styled.hr />
       <MDXRenderer>{post.body}</MDXRenderer>
     </main>
     <PostFooter {...{ previous, next }} />

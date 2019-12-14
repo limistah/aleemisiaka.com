@@ -1,6 +1,8 @@
+/** @jsx jsx */
+
 import React, { Fragment } from "react"
 import { Link } from "gatsby"
-import { Styled, css } from "theme-ui"
+import { Styled, css, jsx } from "theme-ui"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -30,7 +32,8 @@ const Posts = ({ location, posts, siteTitle, socialLinks }) => (
                   {title}
                 </Styled.a>
               </Styled.h2>
-              <small>{node.date}</small>
+              <small sx={{ fontWeight: "bold" }}>{node.date}</small>
+
               <Styled.p>{node.excerpt}</Styled.p>
             </div>
           </Fragment>

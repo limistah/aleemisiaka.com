@@ -1,7 +1,5 @@
 /** @jsx jsx */
-
-import React, { Fragment } from "react"
-import { css, Styled, jsx } from "theme-ui"
+import { css, jsx } from "theme-ui"
 import { Link } from "gatsby"
 
 export default props => {

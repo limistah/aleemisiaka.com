@@ -1,12 +1,9 @@
 /** @jsx jsx */
-import React from "react"
 import { Link } from "gatsby"
-import { css, useColorMode, Styled, jsx } from "theme-ui"
+import { css, useColorMode, jsx } from "theme-ui"
 import Switch from "./switch"
-import Bio from "../components/bio"
 import sun from "../../../content/assets/sun.png"
 import moon from "../../../content/assets/moon.png"
-const rootPath = `${__PATH_PREFIX__}/`
 
 const NavLink = props => {
   return (
@@ -20,7 +17,6 @@ const NavLink = props => {
         fontWeight: 700,
         m: "0",
         textDecoration: "none",
-        variant: "styles.navlink",
         p: 2,
       })}
     >

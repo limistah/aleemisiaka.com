@@ -7,7 +7,11 @@ import { Styled } from "theme-ui"
 
 export default ({ author, authorBio }) => (
   <Fragment>
-    With 💗 by <Styled.a href="http://aleemisiaka.com/about">{author}</Styled.a>
+    With{" "}
+    <span role="img" aria-labelledby="img">
+      💗
+    </span>{" "}
+    by <Styled.a href="http://aleemisiaka.com/about">{author}</Styled.a>
     .
     <br />
     {authorBio}

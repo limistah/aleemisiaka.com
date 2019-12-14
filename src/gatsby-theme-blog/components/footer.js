@@ -1,6 +1,6 @@
 /** @jsx jsx */
 
-import { css, Styled, jsx } from "theme-ui"
+import { jsx } from "theme-ui"
 import NavLink from "./navLink"
 
 const Footer = () => {
@@ -12,7 +12,7 @@ const Footer = () => {
         alignItems: "center",
         justifyContent: "center",
         p: 2,
-        variant: "styles.footer"
+        variant: "styles.footer",
       }}
     >
       <NavLink to="/">Home</NavLink>

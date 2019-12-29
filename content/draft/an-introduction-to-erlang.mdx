@@ -12,18 +12,7 @@ The strength of Erlang lies in running scalable applications in a Distributed en
 
 We are not here to battle why Erlang is the great concurrent programming language, we are here to envagalize about its syntax and way of thinking.
 
-In this posts, we would be getting a formal introduction to Erlang and we are just covering the basics. Below is a list of what to expect:
-
-- [Installation and Initialization](#installation-and-initialization)
-- [Variables and pattern matching](#variables-and-pattern-matching)
-- Funcs
-- Modules
-- Types
-- Records
-- Maps
-- Processes
-- Processes communication
-- Distributed system
+In this posts, we would be getting a formal introduction to Erlang and we are just covering the basics. We would be covering variables, funcs (functions), modules, types, records, maps, processes, and distributed system.
 
 What we won't cover is the whole of the OTP framework. In the future, we would be having a post about this, for now, _let's learn some Erlang_!
 
@@ -36,31 +25,17 @@ a default welcome message and prompt should be seen. Great, welcome to the Erlan
 
 ![Erlang welcome message](../assets/erlang-default.png)
 
-## Variables and pattern matching
+---
 
-If you have worked with other languages like JavaScript, Java, Python etc, you would be surprised by what Erlang understands as variable. In Erlang, variables starts with uppercase letter, thus, `C`, `X`, `Ape`, `Ant` are all valid identifiers for Erlang variables. Variables can not start with lowercase letter and begin with a number, Erlang variables can include can alphanumeric characters, an underscore and @ symbol.
+Now that we have covered the very basic installation, follow through the links below to learn more about Erlang and its syntax.
 
-```erl
-X = 1. %% Valid
-y = 2. %% Invalid
-1X = 2. %% Invalid
-```
-
-When _assigning_ to a variable - as we do call it in other languages, Erlang actually does something called pattern matching. Comparing the values on the right to the values on the left. A pattern match would only succeed if they two operands match, thus, in Erlang, a variable get assigned to if it is either `unbound` or has the same value as the value at the right.
-
-The `=` is a special symbol that does not do assignment but makes the pattern matching operation to be successful if its conditions are met. Hence, in Erlang `=` is known as a pattern match operator which evaluates the value of the right hand side (RHS) then matching the result with the left hand side (LHS)
-
-```erlang
-X = 1. %% successful
-Y = 2. %% successful
-Z = X + 1. %% successful
-
-Z. %% => 3
-
-Z = 3 %% successful
-Z = 4 %% fails
-```
-
-There is no thing as global or private scope in Erlang, all variables are lexically scoped and are unrelated even if they exists in different functions;
-
-![Erlang Variables](../assets/erlang-variables.png)
+- [Variables](/blog/erlang-variables)
+- [Pattern Matching](/blog/erlang-pattern-matching)
+- [Funcs](/blog/erlang-functions)
+- [Modules](/blog/erlang-modules)
+- [Types](/blog/erlang-types)
+- [Records](/blog/erlang-records)
+- [Maps](/blog/erlang-maps)
+- [Processes](/blog/erlang-processes)
+- [Processes communication](/blog/erlang-processes-communication)
+- [Distributed system](/blog/erlang-distributed-system)

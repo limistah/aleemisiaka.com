@@ -57,7 +57,8 @@ const Post = ({
           Edit on github
         </Styled.a>
         <Styled.a
-          href={`https://twitter.com/intent/tweet?hashtags=${tags}&original_referer=http://aleemisiaka.netlify.com&ref_src=twsrc%5Etfw&text=${filename}+https://aleemisiaka.netlify.com/${post.slug}&tw_p=tweetbutton&url=aleemisiaka.netlify.com`}
+          target="_blank"
+          href={`https://twitter.com/intent/tweet?hashtags=${tags}&original_referer=http://aleemisiaka.netlify.com&ref_src=twsrc%5Etfw&text=${post.title}+https://aleemisiaka.netlify.com/${post.slug}&tw_p=tweetbutton&url=aleemisiaka.netlify.com`}
         >
           Tweet
         </Styled.a>

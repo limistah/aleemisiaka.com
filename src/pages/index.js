@@ -13,6 +13,7 @@ export default () => {
       siteMetadata: { social, author },
     },
   } = data
+  console.log(authorPhoto)
   return (
     <Layout>
       <Styled.div css={css({ textAlign: "center" })}>

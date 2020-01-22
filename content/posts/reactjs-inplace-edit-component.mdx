@@ -1,14 +1,14 @@
 ---
-title: ReactJS Inplace Edit component
+title: ReactJS - Inplace Edit component
 date: 2020-01-20
 tags: [ReactJS]
 ---
 
-Last time, I was trying to render a data table and I thought that I should make some fields editable right in the table listing. It is interesting to note that I never thought about any NPM library for it, so I went all out to create a simple but effective solution for myself.
+Last time, I was trying to render a data table and I thought that I should make some fields _editable_ right in the table listing. It is interesting to note that I never thought about any [NPM](https://www.npmjs.com/) library for it, so I went all out to create a simple but [effective solution for myself](https://gist.github.com/limistah/b91b5429c0a4f8062b26445d12877361).
 
-In this post, I will demonstrate how to create an ediable component. The component would be able to use different form fields and notify the parent if any change has been made. That said, Let's move....
+In this post, I will demonstrate how I created an editable component. The component would be able to use different form fields and notify the parent if any change has been made. That said, Let's move....
 
-To start with, I will define the usage that I want for my component. In my own case, I would love the component to be called like this:
+To start with, I will define the usage that I had for the component. The component to be was consumed like this:
 
 ```js
 <InplaceEdit
@@ -43,9 +43,6 @@ function InplaceEdit() {
 
 export default InplaceEdit; // I won't repeat this after now
 ```
-
-Awesome!
-
 Next, I wanted to toggle between two modes. One being a normal text, and the other when it is a form field. To do this, I added an `onClick` handler to the root `div` element, which updates a state that determines these modes.
 
 ```js
@@ -63,8 +60,6 @@ function InplaceEdit() {
   );
 }
 ```
-Great...
-
 Next, I required two distinct components for both the editor and display, I called them `EditDisplay` and `TextDisplay`, respectively. This made the InplaceEdit component looked more like this:
 
 ```js
@@ -96,8 +91,7 @@ function EditDisplay() {
 // Text display component
 const TextDisplay = () => <></>;
 ```
-
-Awesome, so, at this point, I was able to toggle between two modes, but nothing happens and nothing is rendered, yet. To move forward, I had to display the text which would be received by the `InplaceEdit` component and passed to the `TextDisplay` component as props. The below code is what I implemented for this phase:
+So, at this point, I was able to toggle between two modes, but nothing happens and nothing is rendered, yet. To move forward, I had to display the text which would be received by the `InplaceEdit` component and passed to the `TextDisplay` component as props. The below code is what I implemented for this phase:
 
 ```js
 
@@ -125,10 +119,9 @@ function InplaceEdit({ text }) {
   );
 }
 ```
+I was glad when I got to this point. I am sure you are as well, at least, something is getting rendered.
 
-Great! I was glad when I got to this point. I am sure you are as well, at least, something is getting rendered.
-
-It is very correct if you guessed that the TextDisplay component will not change its state afterwards, and bulk of work is around the EditDisplay component. So, sorry, I won't be adding that style that you are thinking.
+It is very correct if you guessed that the TextDisplay component will not change its state afterwards, and bulk of the work is around the `EditDisplay` component. So, sorry, I won't be adding that style that you are thinking.
 
 The next move I made was to tell the EditDisplay what type of edit is required and the default value for the edit.
 
@@ -192,7 +185,7 @@ const TextInput = ({ type, defaultValue, onBlur, disabled }) => {
 ```
 This component`TextInput` does a pretty interesting stuff, first, it handles the `KeyUp` event which sends information up to the parent(`InplaceEdit`) component, it can be disabled, the type is set as from the parent and the defaultValue is also configurable through the props.
 
-While the `SelectInput`, I defined it to look like this:
+And the `SelectInput`, I defined it to look like this:
 ```js
 const SelectInput = ({ options, defaultValue, onBlur, disabled }) => {
   return (
@@ -238,11 +231,8 @@ const EditDisplay = ({
   );
 };
 ```
-
 Next, I thought, the `EditDisplay` component receives some props that are not yet defined in the `InplaceEdit` component, so I defined them like so:
-
 ```js
-
 function InplaceEdit({
   text,
   inputType,
@@ -309,4 +299,4 @@ This was a very interesting process for me, and I never regret it and never will
 
 The full code is available as a gist [here](https://gist.github.com/limistah/b91b5429c0a4f8062b26445d12877361), if you want to check it out. And, thank you for reading.
 
-_Namaste_! 🙇
+[Dhanyavaad](https://translate.google.com/#view=home&op=translate&sl=en&tl=hi&text=Thank%20you)! 🙇

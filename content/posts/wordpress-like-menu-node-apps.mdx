@@ -12,11 +12,11 @@ I just walked past this process, here, I am sharing how I have conquered it.
 
 ### To consider
 
-I have a limitation for the menu to be deeply nested not more than two steps, so in this case, I the loops that I write won't have to be too recursive -  which if not properly handled could create havoc.
+I have a limitation for the menu to be deeply nested not more than two steps, so in this case, this is to ensure that the loops that I will write won't have to be too recursive -  which if not properly handled could create havoc.
 
 ## Model/Database
 
-In my database, I have the menu store as a flat document which each of them having their own information. The menu model has the following properties:
+In my database, I have the menu store as a flat document with each of them having their own information. The menu model has the following properties:
 
 - **position:** Position of the menu (Determined by the application, in my case, "Main Nav", and "Footer Menu")
 - **name:**Text that the user would see
@@ -90,6 +90,8 @@ First problem has been solved.
 
 Next problem is making the data of the menu available in a format that we can render more easily.
 
+### Menu parser middleware
+
 To solve this, I created a middleware which sets a global value for my view engine. The code in the middleware looks like this:
 
 ```js
@@ -110,6 +112,8 @@ async handle({ request, view }, next) {
   view.share({ siteMenus: builtMenu });
 }
 ```
+
+### Parsing of Zero Level menus and sorting
 
 After the middleware has been defined, first is to understand that our menu won't go more than two levels, with the zero level being the parent to other menus. To get the parent out of the menu, we map through all the items in the `menus` variable, getting all the elements that has just no dot in their parent value then storing them at a position defined in the `builtMenu` object
 
@@ -135,7 +139,7 @@ menus.map(menu => {
 
 Before we move forward, we should add code that sorts the generated menu so far, the easiest way is to get the keys in the built menu and map through each keys, then running the `sort` aggregation method on each item of the `builtMenu` data.
 
-This sorting onl compares the weight of each menu item, these weights are expected to go in ascending order, hence we can use `a.weight > b.weight` so that we can have lowest number comes first ahead of larger number
+This sorting only compares the weight of each menu item, these weights are expected to go in ascending order, hence we can use `a.weight > b.weight` so that we can have lowest number comes first ahead of larger number
 
 ```js
 const sortedMenu = {}; // Holds all the menu that has been sorted
@@ -173,6 +177,8 @@ At this stage, our `builtMenu` should look like this:
 ```
 
 What we have to do next is work with the menus that exist in the `menuWithParent` variable that was gathered while pulling the menus that do not have child/grandchild.
+
+### Parsing of First Level menus and sorting
 
 To do this, we map through all the item in the variable, ensure that it does not have grandparent, if it does we push it to the `menuWithGrandParent` array for later processing, if it does not, we append the menu to the parent after creating a children array in to the parent if children array does not exist in the parent.
 
@@ -242,6 +248,7 @@ At this stage, our `builtMenu` should look like this:
 }
 ```
 
+### Parsing of Second Level menus and sorting
 
 Now that we have the parent and children out, we are left with just one level deep, which is for the grandchild. The code is similar to the one that generate the children menus just that we have to get the index for the parent, grandparent and ensure that they have children or we create one for them before we can append the new array into them.
 
@@ -313,6 +320,7 @@ Finally, our `builtMenu` should look like this:
   ]
 }
 ```
+### Putting it all together
 
 Compiling all together, the middleware looks like:
 ```js

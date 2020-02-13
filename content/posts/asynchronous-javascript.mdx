@@ -27,20 +27,51 @@ Still, with the _single threaded_ nature of JavaScript, there is a unique featur
 
 ### A real life case study
 
-In high school, when we were given an assignment, we were required to submit them. Once we submit those assignment to the teacher, we are expected to wait to return them marked/graded.
+___
 
-While we have submitted those assignments and were waiting for the results, we could do other things like reading, attend classes, play games and joke with friends.
+> In high school, when students are given an assignment, they are required to submit it. Once they submit the assignment to the teacher, they are expected to wait until they are returned back to them already marked/graded.
 
-Once the teacher is done marking, he notifies us, and we would go to get them from him/her, and the process is completed.
+> While they had submitted the assignments and were waiting for the results, they could do other things like reading, attend classes, play games and joke with friends.
 
-In this scenario, we have done a task asynchronously. While the teacher could only do one thing at a time, we have asked him/her to teach us and still mark our assignments.
+> Once the teacher is done marking, the students are notified, and they would go to the teacher to pick them up, completing the process.
 
-We knew that he could not complete both of them at the same time, so we would wait but, set a trigger (through the class rep/governor) that made us to know that the assignments are ready and the results are out.
+___
 
-The notification could help us to determine what next to do, either to proceed with putting our books into our bags or doing the corrections or learning from other classmates.
+In this scenario, the students have done a task asynchronously. While the teacher could only do one thing at a time, they have asked the teacher to teach them and still mark their assignments.
 
-That is what we do in asynchronous programming.
+It is clear that he could not complete both of them at the same time, so they would have to wait, but, set a trigger (through the class rep/governor) that made them to know that the assignments are ready and the results are out.
+
+The notification could help the students to determine what next to do, either to proceed with putting their books into their bags or doing the corrections or learning from other classmates. (__whatever is next__)
+
+That is what happens in asynchronous programming.
 
 ### Asynchrony in JavaScript
 
-While the languages comes with support for asynchronous programming, there was no inclusion of an official model to write an asynchronous program until programmers started inventing their own models. In the modern JavaScript engine, there is an added support for writing asynchronous codes. We would be exploring these options and their demerits, and we would conclude with why I think that Async/Await is a great feature to understand. Let's hit the engine start knob. 
+While the language comes with support for asynchronous programming, there was no inclusion of an official model to write an asynchronous program until programmers started inventing their own models.
+
+In the modern JavaScript engine, there is an added support for writing asynchronous codes. We would be exploring these options and their demerits, and I would conclude with why I think that Async/Await is a great feature to understand. Let's hit the engine start knob.
+
+### Callbacks
+
+For seasoned developers, this might seem like unveiling a nightmare following their experiences with callback hell. But, callback is not that bad.
+
+Callback is a function passed to a function call, the function would be executed when the called function determines. A basic example is what `setTimeout`, `setInterval` are doing. Once they are called, they take the function and execute it at the passed time in their second argument.
+
+```js
+setTimeout(() => console.log("This is a callback 1 sec. setTimeout test"), 1000);
+setInterval(() => console.log("This is a callback 1 sec. setInterval test"), 1000);
+```
+
+The two function calls above receives a callback as their first argument, and execute it once they reach the time (1sec) in their second argument. They will never obstruct the main thread from continuing executing other functions, instead a trigger would be 
+
+
+
+
+
+### Good Ol days of AJAX
+
+It might be so uncommon to the modern developers what this means right in the browser with the myriads of NPM libraries that make this happen in a few lines of code, also, the inclusion of the _fetch_ API to the modern JavaScript engines.
+
+Prior to the days of EcmaScript 6, while developers still really dislike working with JavaScript (_which is unavoidable, though_ 😄), requests could be made over the internet through a feature of JavaScript called **Asynchronous JavaScript and XML**, popularly known as **AJAX**.
+
+This AJAX feature was invented by Microsoft 

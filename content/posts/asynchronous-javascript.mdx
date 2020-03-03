@@ -4,24 +4,26 @@ date: 2020-03-03
 tags: [JS]
 ---
 
-In computation systems, names like concurrent, sequential, parallel, serial, synchronous, asynchronous, non-blocking, shared state, message passing and likes, these names stand as a forbearer for the actual task that actually happens in a system.
+In computation systems, names like concurrent, sequential, parallel, serial, synchronous, asynchronous, non-blocking, shared state, message passing, and likes, these names stand as a forbearer for the actual task that happens in a system.
 
-While all of above techniques have their use cases, in the world of JavaScript, asynchronous and synchronous programming never leave the tongues of its programmers.
+While all of the above techniques have their use cases, in the world of JavaScript, asynchronous and synchronous programming never leave the tongues of its programmers.
 
 In his [__Concurrency glossary__](https://slikts.github.io/concurrency-glossary/?id=asynchronous-vs-synchronous-non-blocking-concurrent-vs-blocking-sequential), **slikts (dabas@untu.ms)** wrote about asynchronous, he said:
 
 > Asynchrony means "not happening at the same time", and asynchronous message passing is a communication model that does not require the sending and receiving to be synchronized, meaning that the sender isn't blocked until the receiver is ready.
 
-It might not be clear still, we will go into a later detail about this with a real life example. (_Don't tell anyone, life is mostly asynchronous_).
+It might not be clear; still, we will go into a later detail about this with a real-life example. _Don't tell anyone, life is mostly asynchronous_.
 
-While languages like Java, C#, C++ etc runs their computation on their main thread, and could _spawn_ out a new thread to run another set of instructions which are in parallel to the main thread and could communicate with it, JavaScript in its uniquenes does not support that model of computation.
+While languages like Java, C#, C++, etc. run their computation on their main thread and could _spawn_ out a new thread to run another set of instructions which are in parallel to the main thread and could also communicate with it. JavaScript, in its uniqueness, does not support that model of computation.
 
-In JavaScript, all computations and instructions are run in a [sequence](https://slikts.github.io/concurrency-glossary/?id=concurrent-order-independent-vs-sequential) (i.e one after another) in a single thread. This means that for instructions ranging from A, B, C, ... to E to be executed, A would be executed firstly and when done, B is then executed, then C, then D, then E which sees the program to its end.
+In JavaScript, all computations and instructions are run in a [sequence](https://slikts.github.io/concurrency-glossary/?id=concurrent-order-independent-vs-sequential) (i.e., one after another) in a single thread. This means that for instructions ranging from A, B, C, D, E to be executed, A would be executed first and when done, B is then executed, then C, then D, then E, which sees the program to its end.
 
 ![https://www.youtube.com/watch?v=2ZH_1d8TYVg](../assets/maxresdefault.jpg)
 
 
-Still, with the _single threaded_ nature of JavaScript, there is a unique feature that makes it outstanding, it is its **non blocking I/O model**. I/O(Input/Output) could be in any form, like fetching of data over the internet, getting a file from the filesystem and likes, all of these processes does not block the main thread from continuing its execution.
+Still, with the single-threaded nature of JavaScript, there is a unique feature that makes it outstanding, it is its **non-blocking I/O** model.
+
+_I/O(Input/Output)_ could be in any form, like fetching of data over the internet, getting a file from the filesystem and likes, all of these processes does not block the main thread from continuing its execution.
 
 
 
@@ -29,9 +31,9 @@ Still, with the _single threaded_ nature of JavaScript, there is a unique featur
 
 ___
 
-> In high school, when students are given an assignment, they are required to submit it. Once they submit the assignment to the teacher, they are expected to wait until they are returned back to them already marked/graded.
+> In high school, when students are given an assignment, they are required to submit it. Once they submit the task to the teacher, they are expected to wait until they are returned back to them already marked/graded.
 
-> While they had submitted the assignments and are waiting for the results, they could do other things like reading, attend classes, play games and joke with friends.
+> While they had submitted the assignments and are waiting for the results, they could do other things like reading, attend classes, play games, and jokes with friends.
 
 > Once the teacher is done marking, the students are notified, then they would go to the teacher to pick them up, completing the process.
 
@@ -39,30 +41,30 @@ ___
 
 In this scenario, the students have done a task asynchronously. While the teacher could only do one thing at a time, they have asked the teacher to teach them and still mark their assignments.
 
-It is clear that the teacher could not complete both of them at the same time, so they would have to wait, but, set a trigger (through the class rep/governor) that made them to know that the assignments are ready and the results are out.
+The teacher could not complete both of them at the same time, so they would have to wait, but, set a trigger (through the class rep/governor) that made them know that the assignments are ready and the results are out.
 
-The notification could help the students to determine what next to do, either to proceed with putting their books into their bags or doing the corrections or learning from other classmates. (__whatever is next__)
+The notification could help the students to determine what next to do. Maybe, to proceed with putting their books into their bags or doing the corrections or learning from other classmates. (__whatever is next__)
 
 That is what happens in asynchronous programming.
 
 ### Asynchrony in JavaScript
 
-JavaScript as a language comes with support for asynchronous programming, there has been different ways to come up with this. Most common is the callbacks which could be seen in many legacy code bases. 
+JavaScript as a language comes with support for asynchronous programming; there have been different ways to come up with this. Most common is the callbacks, which could be seen in many legacy code bases. 
 
 In the modern JavaScript engine, there is an added support for writing asynchronous codes. We would be exploring these options and their demerits, and I would conclude with why I think that Async/Await as a feature of the language is too essential to understand. Let's hit the start knob.
 
 ### Callbacks
 
-For seasoned developers, this might seem like unveiling a nightmare following their experiences with _callback hell_. But, callback is not that bad.
+For seasoned developers, this might seem like unveiling a nightmare following their experiences with _callback hell_. But, a callback is not that bad.
 
-Callback is a function passed at a function call/invocation to be executed when the called function determines. A basic example is what `setTimeout`, `setInterval` are doing. Once they are called, they take the function and execute it at the passed time in their second argument.
+A callback is a function passed during a function call/invocation to be executed when the called function determines. A basic example is what `setTimeout`, `setInterval` do. Once any of them get called, it takes the function and executes it at the specified time in their second argument.
 
 ```js
 setTimeout(() => console.log("This is a callback 1 sec. setTimeout test"), 1000);
 setInterval(() => console.log("This is a callback 1 sec. setInterval test"), 1000);
 ```
 
-The two function calls above receives a callback as their first argument, and execute it once they each reach the time (1sec) in their second argument. They will never obstruct the main thread from continuing executing other functions, instead an entry is made in the call stack to take care of this.
+The two function calls above receive a callback as their first argument and execute it once they each reach the time (1sec) in their second argument. They will never obstruct the main thread from continuing executing other functions; instead, an entry is made in the call stack to take care of this.
 
 Another great example is in the DOM Events API. A basic `onclick` event could be listened to like this:
 
@@ -75,12 +77,12 @@ button.addEventListener("click", () => {
 
 Once the button is clicked, with the single thread nature of JavaScript, one would expect that the above code should work like this:
 
-- Store the DOM reference of `submitButton` to `button` variable.
+- Store the DOM reference of `submitButton` to the `button` variable.
 - `button.addEventListener` is called which puts in an entry into the call stack
 - The event is registered against a `click` name, and the code for the `addEventListener` is executed.
 - Once it is executed, the function/handler should be triggered immediately in the `addEventListener` execution context
 
-As stated in the above, we expect all of these to happen in parallel, but what happens here is that codes and functions are delegated to a later time when an actual action has happened. Recall the High School Assignment illustration we gave?
+As stated in the above, we expect all of those to happen in parallel. But, what happens there is that codes and functions are delegated to a later time when an actual action has happened. Recall the [High School Assignment](a-real-life-case-study) illustration we gave?
 
 What happens is that: 
 > Once the `click` event has been triggered on the button, the function would be executed. And this could happen any time in the future, but other codes could still run while waiting for this.
@@ -88,11 +90,11 @@ What happens is that:
 
 #### Good Ol'days of AJAX
 
-It might be so uncommon to the modern developers what this means right in the browser with the myriads of NPM libraries that make this happen in a few lines of JS code, also, the inclusion of the _fetch_ API to the modern JavaScript engines takes away the underlying fact about AJAX web requests.
+With the myriads of NPM libraries that make this happen in a few lines of JS code. Also, the inclusion of the _fetch_ API to the modern JavaScript engines has made this to be so uncommon to the modern developers what AJAX means right in the browser, as they take away the underlying fact about AJAX web requests.
 
-Prior to the days of EcmaScript 6, while developers still really disliked working with JavaScript (_which is unavoidable for web developers, though_ 😄), web requests could be made over the internet through an XMLHTTPRequest object. The technique for making this request was later formed to be called **Asynchronous JavaScript and XML**, popularly known as **AJAX**.
+Before the days of EcmaScript 6, while developers still really disliked working with JavaScript (_which is unavoidable for web developers, though_ 😄), web requests could be made over the internet through an XMLHTTPRequest object. The technique for making this request was later formed to be called **Asynchronous JavaScript and XML**, popularly known as **AJAX**.
 
-What AJAX simply means is that we could make a request over the internet, wait for the result to come while still having other things going on in the browser (basically, a loading icon). This is asynchronous in nature, and the main reason why it is called `AJAX`.
+What AJAX means is that we could request the internet, wait for the result to come while still having other things going on in the browser (basically, a loading icon). This is asynchronous in nature, and the main reason why it is called `AJAX`.
 
 AJAX uses the callback model, a basic _vanilla_ AJAX request using the  XMLHTTPRequest object looks like this:
 
@@ -109,18 +111,17 @@ xhttp.open("GET", "filename", true);
 xhttp.send();
 ```
 
-_It is not interesting, I know. If you are a modern JavaScript developer, respect those that have passed through this and still looks uncool to you, this was so cool to them, back then._
+_It is not attractive, I know. If you are a modern JavaScript developer, respect those that have passed through this and still look uncool to you, this was so cool to them back then._
 
-This AJAX feature utilizes the model of event handling, and was very easy to comprehend by JavaScript developers. But, it shares similar problem with all callback based coding patterns/techniques.
+This AJAX feature utilized the model of event handling and was very easy to comprehend by JavaScript developers. But, it shares a similar problem with all callback-based coding patterns/techniques.
 
 #### Callback Hell
-
-Does it really mean a hell in our codes/machines, well, not necessarily. It is something really interesting to know about.
+Does it mean hell in our codes/machines, well, not necessarily? It is something exciting to know some of its details.
 
 ![Callback hell](../assets/callbackhell.png)
 >> [Image source](https://lh3.googleusercontent.com/proxy/DOxEQlABD3FPPagO7xG_D-3Go3PPOjqbhsUljaM7bpZwmRs9Ep3flHBoCK8c2p_yU_Nilh5Dh8l3M-Ct75Jfhb7lnCvYgPqtj1Tekw)
 
-Let's tell of a story of a codebase that really illustrates this.
+Let's tell of a story of a codebase that illustrates this.
 
 First let's define a function that takes a callback. It would add two numbers together, then pass the result to a function defined as the third argument, clear enough? I believe!
 
@@ -144,7 +145,7 @@ numbers.forEach((number, index) => {
 })
 ```
 
-As seen above, we are just two levels deep into the callback calls, and it is not getting any interesting. It should be noted that as the callback levels increases, the risk of hitting a re-initialization of variables increases. The first callback might have initialized `numbers` re-initializing it might disrupt the logic of the code, who knows?
+As seen above, we are just two levels deep into the callback calls, and it is not getting any interesting. It should be noted that as the callback levels increase, the risk of hitting a re-initialization of variables increases. The first callback might have initialized `numbers` re-initializing it might disrupt the logic of the code, who knows?
 
 And looking at an example from the below image, we can see that it can get so uninteresting in larger applications.
 
@@ -162,9 +163,9 @@ let promise = new Promise(function(resolve, reject) {
 });
 ```
 
-In constructing a promise, we call the Promise constructor with a function called the _executor_. This function(executor) receives two arguments labelled as `resolve` and `reject` both of which are functions. 
+In constructing a promise, we call the Promise constructor with a function called the _executor_. This function(executor) receives two arguments labeled as `resolve` and `reject`, both of which are functions. 
 
-The `resolve` argument is expected to be called with a value `resolve(value)` only when the executor has finish doing its tasks without any error. While the `reject` is expected to be called with a value (usually of type Error) `reject(error)` only if the promise failed or faced an error.
+The `resolve` argument is expected to be called with a value `resolve(value)` only when the executor has finished doing its tasks without any error. While the `reject` is expected to be called with a value (usually of type Error) `reject(error)` only if the promise failed or faced an error.
 
 ```js
 let promise = new Promise(function(resolve, reject) {
@@ -177,13 +178,13 @@ let promise = new Promise(function(resolve, reject) {
 });
 ```
 
-There are three (3) notable methods for every promise object.
+There are three (3) notable methods for every Promise object.
 
 - `.then()` Accepts a function that receives the value passed when `resolve` is called by the executor. Only get called when the executor calls `resolve`.
 - `.catch()` Accepts a function that receives the value passed when `reject` is called by the executor. Only get called when the executor calls `reject`.
 - `.finaly()` 
 
-The object returned by every initialization of a Promise constructor has some special attributes and methods. One of this is the _status_ `promise.status` property which tells about the current state of the Promise.
+The object returned by every initialization of a Promise constructor has some special attributes and methods. One of this is the _status_ `promise.status` property, which tells about the current state of the Promise.
 
 The _status_ properties has three (3) possible values:
 
@@ -258,14 +259,13 @@ const getNumber  = () => {
 
 const result = await getNumber();
 ```
+Looking closely at the code above, we could see that the `getNumber` function returns an async function(a Promise), but why not make the returned function the primary function for `getNumber`?
 
-Looking closely to the code above, we could see that the `getNumber` function returns an async function(a Promise), but why not make the returned function the main function for `getNumber`?
+No, we can not. JavaScript does not support making a global function an `async` function; the best we can do is wrap it in a containing function and make the inner function returns an `async` function. If we need a global function to be a Promise, it is best that we use a Promise constructor to define it.
 
-No, we can not. JavaScript does not support making a global function an `async` function, the best we can do is wrap it in a containing function and make the inner function returns an `async` function. If we need a global function to be a Promise, it is best that we use a Promise constructor to define it.
+When we called `const result = await getNumber()`, we are telling the engine not to run any other code until we have the result from the Promise returned by `getNumber`, in this case, 20. If we omit `await` from that expression, following codes will run while running the Promise returned by `getNumber` in the background.
 
-When we called `const result = await getNumber()`, we are telling the engine to not run any other code until we have the result from the Promise returned by `getNumber`, in this case 20. If we omit `await` from that expression, subsequent codes would run while running the Promise returned by `getNumber` in the background.
-
-In my honest opinion, I see `async` as a syntactic sugar to constructing a Promise on the fly. If we would want to attempt to have the getNumber as a promise constructor instead of an `async/await` we would have:
+In my honest opinion, I see `async` as syntactic sugar to constructing a Promise on the fly. If we would want to attempt to have the getNumber as a promise constructor instead of an `async/await` we would have:
 
 ```js
 const getNumber = new Promise (function(resolve, reject) {
@@ -283,12 +283,12 @@ Do you want to learn more about Async/Await and be a Ninja of asynchronous javas
 
 ## Conclusion
 
-As seen above, we can deduce that the underlying engine of JavaScript supports asynchronous coding, while this is great, it created some problems for developers trying to make their code asynchronous.
+As seen above, we can deduce that the underlying engine of JavaScript supports asynchronous coding. At the same time, this is great; it created some problems for developers trying to make their code asynchronous.
 
 As a solution to the challenge, Promise was introduced into the language, which was followed by the inclusion of Async/Await construct.
 
-In my honest opinion, writing Async/Await in my code bases has made my codes not just readable, but very predictable.
+In my honest opinion, writing Async/Await in my codebases has made my codes not just readable, but very predictable.
 
-So, to asynchronous Javascript coding, I highly recommend understand Promises and Async/Await construct if at all we want our _future self_ and _other developers_ to say a prayer when they see our code after we writing it.
+So, to asynchronous Javascript coding, I highly recommend understanding Promises and Async/Await construct if at all we want our _future self_ and _other developers_ to say a prayer when they see our code after we write it.
 
 _Shalom!_

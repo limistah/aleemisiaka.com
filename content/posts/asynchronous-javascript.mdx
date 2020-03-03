@@ -155,9 +155,7 @@ And looking at an example from the below image, we can see that it can get so un
 
 In JavaScript, Promises have made the life of programmers more easier in handling asynchronous codes. With Promises, most of the underlying problems like callback hells are waved out. 
 
-Promises has a very interesting background in JavaScript, [Eric Elliott](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) gave 
-
-Basically, a promise can be constructed in a few lines of code:
+Promises has a very interesting background in JavaScript, [Eric Elliott](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) gave has a great information about promises, regarding that, a promise could be constructed in a few lines of code:
 ```js
 let promise = new Promise(function(resolve, reject) {
   // executor
@@ -242,9 +240,11 @@ There is more to Promises, this only gives a preamble and brief introduction to 
 
 ### Async / Await
 
-It is not surprising to note that, for some unknown reasons that are best know to developers, they want Promises to be synchronous. They found themselves in a situation where they need the result of a Promise to be available before they proceed to the next chunk of code. Either it is a network request, or a result from an extensive calculating function, they just needed that to be available right in the next line of the code.
+It is not surprising to note that, for some unknown reasons that are best known to developers, they want Promises to be synchronous.
 
-To solve this for them, the folks at TC39 gave us Async/Await.
+They found themselves in a situation where they need the result of a Promise to be available before they proceed to the next chunk of code - Either it is a network request, or a result from an extensive math function, they just needed the result to be available right in the next line of their codes.
+
+To solve this for them, the folks at [TC39](https://tc39.es/) gave us [Async/Await](https://github.com/tc39/ecmascript-asyncawait).
 
 This feature assists in constructing a promise right from a function, and we could wait for the result of a Promise before moving to the next line of code.
 

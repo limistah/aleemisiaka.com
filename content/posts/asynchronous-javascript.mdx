@@ -1,6 +1,6 @@
 ---
 title: Asynchronous Javascript
-date: 2020-02-05
+date: 2020-03-03
 tags: [JS]
 ---
 
@@ -117,7 +117,8 @@ This AJAX feature utilizes the model of event handling, and was very easy to com
 
 Does it really mean a hell in our codes/machines, well, not necessarily. It is something really interesting to know about.
 
-// A callback hell photos
+![Callback hell](../assets/callbackhell.png)
+>> [Image source](https://lh3.googleusercontent.com/proxy/DOxEQlABD3FPPagO7xG_D-3Go3PPOjqbhsUljaM7bpZwmRs9Ep3flHBoCK8c2p_yU_Nilh5Dh8l3M-Ct75Jfhb7lnCvYgPqtj1Tekw)
 
 Let's tell of a story of a codebase that really illustrates this.
 
@@ -192,7 +193,7 @@ The _status_ properties has three (3) possible values:
 - Resolved: This is a state after `resolve()` has been called.
 - Rejected: This is a state after `reject()` has been called, or an error is thrown in the executing function.
 
-Promise are chainable, hence, every `then()` called on a promise object returns another promise.
+Promise are chainable, hence, every `.then()` called on a promise object returns another promise.
 
 ```javascript
 const promise = new Promise(function(resolve, reject) {
@@ -212,7 +213,18 @@ promise
   .then(value => console.log(value));
 ```
 
-While consuming the promise, every resolver in the `.then()` function returns a value until the last call to `.then()`. Failure to do this as we have done in the last call of `.then()` would make the next call to `.then()` recive an `undefined`.
+While consuming the promise, every resolver in the `.then()` function returns a value until the last call to `.then()`. Failure to do this as we have done in the last call of `.then()` would make the next call to `.then()` receive an `undefined`.
+```js
+
+// Consuming the promise
+
+promise
+  .then((value) => value * 4)
+  .then((value) => value * 6)
+  .then(value => console.log(value))
+  .then(value => console.log(value) /* -> undefined */ );
+
+```
 
 We can use the finally in many different ways since it is called irrespective of the state of the Promise. The most obvious case of using it is when we need to hide a loading icon to show a message for the result of the action that has just been carried out.
 
@@ -226,11 +238,11 @@ promise.finally(() => {
 })
 ```
 
-There is more to Promises, this only gives a preamble and brief introduction to it, a thorough explanation could be found [here](asda)
+There is more to Promises, this only gives a preamble and brief introduction to it, a thorough explanation could be found [here](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261)
 
 ### Async / Await
 
-It is not surpsising to note that, for some unknown reasons that are best know to developers, they want Promises to be synchronous. They found themselves in a situation where they need the result of a Promise to be available before they proceed to the next chunk of code. Either it is a network request, or a result from an extensive calculating function, they just needed that to be available right in the next line of the code.
+It is not surprising to note that, for some unknown reasons that are best know to developers, they want Promises to be synchronous. They found themselves in a situation where they need the result of a Promise to be available before they proceed to the next chunk of code. Either it is a network request, or a result from an extensive calculating function, they just needed that to be available right in the next line of the code.
 
 To solve this for them, the folks at TC39 gave us Async/Await.
 
@@ -267,4 +279,16 @@ const getNumber = new Promise (function(resolve, reject) {
 
 In the above code, we have waited for about 1minute for the promise to be resolved if at all no error is thrown in our executor.
 
-Do you want to learn more about Async/Await and be a Ninja of asynchronous javascript? Try seeing the [MDN guide]() on the topic.
+Do you want to learn more about Async/Await and be a Ninja of asynchronous javascript? Try seeing the [MDN guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) on the topic.
+
+## Conclusion
+
+As seen above, we can deduce that the underlying engine of JavaScript supports asynchronous coding, while this is great, it created some problems for developers trying to make their code asynchronous.
+
+As a solution to the challenge, Promise was introduced into the language, which was followed by the inclusion of Async/Await construct.
+
+In my honest opinion, writing Async/Await in my code bases has made my codes not just readable, but very predictable.
+
+So, to asynchronous Javascript coding, I highly recommend understand Promises and Async/Await construct if at all we want our _future self_ and _other developers_ to say a prayer when they see our code after we writing it.
+
+_Shalom!_

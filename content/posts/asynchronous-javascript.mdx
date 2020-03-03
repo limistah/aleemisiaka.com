@@ -194,7 +194,7 @@ The _status_ properties has three (3) possible values:
 
 Promise are chainable, hence, every `then()` called on a promise object returns another promise.
 
-```
+```javascript
 const promise = new Promise(function(resolve, reject) {
   try {
     const value = 2 * 2;
@@ -216,7 +216,7 @@ While consuming the promise, every resolver in the `.then()` function returns a 
 
 We can use the finally in many different ways since it is called irrespective of the state of the Promise. The most obvious case of using it is when we need to hide a loading icon to show a message for the result of the action that has just been carried out.
 
-```
+```javascript
 promise.finally(() => {
   document.querySelector(".loading-icon").remove();
 }).then((data) => {
@@ -227,3 +227,44 @@ promise.finally(() => {
 ```
 
 There is more to Promises, this only gives a preamble and brief introduction to it, a thorough explanation could be found [here](asda)
+
+### Async / Await
+
+It is not surpsising to note that, for some unknown reasons that are best know to developers, they want Promises to be synchronous. They found themselves in a situation where they need the result of a Promise to be available before they proceed to the next chunk of code. Either it is a network request, or a result from an extensive calculating function, they just needed that to be available right in the next line of the code.
+
+To solve this for them, the folks at TC39 gave us Async/Await.
+
+This feature assists in constructing a promise right from a function, and we could wait for the result of a Promise before moving to the next line of code.
+
+```js
+
+const getNumber  = () => {
+  return async () => {
+    return 20;
+  }
+}
+
+const result = await getNumber();
+```
+
+Looking closely to the code above, we could see that the `getNumber` function returns an async function(a Promise), but why not make the returned function the main function for `getNumber`?
+
+No, we can not. JavaScript does not support making a global function an `async` function, the best we can do is wrap it in a containing function and make the inner function returns an `async` function. If we need a global function to be a Promise, it is best that we use a Promise constructor to define it.
+
+When we called `const result = await getNumber()`, we are telling the engine to not run any other code until we have the result from the Promise returned by `getNumber`, in this case 20. If we omit `await` from that expression, subsequent codes would run while running the Promise returned by `getNumber` in the background.
+
+In my honest opinion, I see `async` as a syntactic sugar to constructing a Promise on the fly. If we would want to attempt to have the getNumber as a promise constructor instead of an `async/await` we would have:
+
+```js
+const getNumber = new Promise (function(resolve, reject) {
+  try {
+    setTimeout(() => resolve(20), 60* 1000);
+  } catch (e) {
+    reject(e)
+  }
+})
+```
+
+In the above code, we have waited for about 1minute for the promise to be resolved if at all no error is thrown in our executor.
+
+Do you want to learn more about Async/Await and be a Ninja of asynchronous javascript? Try seeing the [MDN guide]() on the topic.

@@ -1,0 +1,36 @@
+---
+title: SocketIO - App structure and architecture.
+date: 2020-03-04
+tags: [JS]
+---
+
+SocketIO is a JavaScript library that makes the lives of developers so easier when dealing with web socket and socket programming. This is the fact that SocketIO has abstracted out all the low level and tedious steps that are associated with setting up a socket server and client; it has made the question of programmers to be “How can I structure my application.”
+
+Whilst I have done different types of socket implementations, I will walk us through a setup that has always work for me and has proven to be the best in cases that I have had to use SocketIO.
+
+In this post, we will be implementing a basic SocketIO server, setup a small database for our users, have a client that consumes our application.
+
+It will never be as boring as you think, I promise.
+
+>> I have created a repo for the setup and could be found [here](https://github.com/limistah/socketio-setup).
+
+So, to begin with, I will initialize a new repository for the setup for clarity reasons.
+
+```bash
+mkdir socketio-setup
+cd ./socket-io-setup
+git init
+npm init -y
+```
+
+In the above code snippet, we are trying to bootstrap our folder structure and codebase. The first line creates a new directory in our local hard drive. We changed the current directory into the newly created directory, after which we initialized a new but empty GitHub repo, and in the last line, initialized a new npm project using `npm init -y` and accepting the default config through the `-y` flag.
+
+To further complete our initializations, we will install socketio, add `.gitignore` to exclude some _noisy_ folders, and add made our first commit so far for our new repo, _smiles_.
+
+```bash
+npm install -S socketio
+touch .gitignore
+echo '/node_modules' > .gitignore
+git add .
+git commit -am "Initial commit"
+```

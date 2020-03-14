@@ -28,9 +28,28 @@ In the above code snippet, we are trying to bootstrap our folder structure and c
 To further complete our initializations, we will install socketio, add `.gitignore` to exclude some _noisy_ folders, and add made our first commit so far for our new repo, _smiles_.
 
 ```bash
-npm install -S socketio
+npm install -S socketio express
 touch .gitignore
 echo '/node_modules' > .gitignore
 git add .
 git commit -am "Initial commit"
+```
+
+After completing the initialization of our project folders, next we should attempt to bootstrap a basic socket server. To accomplish this, we will firstly create a folder called `src` in the root of the project and make `index.js` the sole file in the folder. Having done that, we can add some code into the `src/index.js` file.
+
+We will first of all create a basic express server and initialize `socketIO` library:
+
+```js
+// Copied from https://socket.io/get-started/chat/
+var app = require('express')();
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
+
+app.get('/', function(req, res){
+  res.send('<h1>Socket IO project folder setup</h1>');
+});
+
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});
 ```

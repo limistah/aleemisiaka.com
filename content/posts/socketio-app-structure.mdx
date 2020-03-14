@@ -128,11 +128,83 @@ io.on('someEventName_3', function (socket) {
 //...
 ```
 
-Funny enough, some handlers for some events can get so large. So, what do we do?
+Funny enough, some handlers for some listeners can get so large. So, what do we do?
 
-This is what we are trying to solve in this post. Firstly, let's create a folder for our events and add an `index.js` file into it.
+This is what we are trying to solve in this post. Firstly, let's create a folder for our listeners and add an `index.js` file into it.
 
 ```bash
-mkdir src/events
-touch ./src/events/index.js
+mkdir src/listeners
+touch ./src/listeners/index.js
+```
+
+What the `src/listeners` is have distinct modules that exports just a function and accepts an `io` parameter which should be the socketIO object, and the index file will be responsible for the initialization of these modular event files.
+
+Moving the `connection` event to an event module would in a file located at `src/listeners/connection.js`, look like this:
+
+```js
+module.exports = function (io) {
+  io.on("connection", function (socket) {
+    socket.emit("connected", socket)
+  })
+}
+```
+
+In the above module, we are exporting a function that accepts the `io` parameter. In the body of the listener we are trying to tell the socket that it has connected by emitting a `connected` event. Simple enough!
+
+Moving forward, we can now import this new listener module in the `index.js` at the listeners directory, then we can write our bootstrapping code for the listener
+
+```js
+// src/listeners/index.JS
+
+module.exports = io => {
+  const fs = require("fs");
+  const path = require("path");
+
+  // Full path to the current directory
+  const listenersPath = path.resolve(__dirname);
+
+  // Reads all the files in a directory
+  fs.readdir(listenersPath, (err, files) => {
+    if (err) {
+      process.exit(1);
+    }
+
+    files.map(fileName => {
+      if (fileName !== "index.js") {
+        console.debug("Initializing listener at: %s", fileName);
+        // Requires all the files in the directory that is not a index.js.
+        const listener = require(path.resolve(__dirname, fileName));
+        // Initialize it with io as the parameter.
+        listener(io);
+      }
+    });
+  });
+};
+
+```
+
+In the above code, we are only trying to ensure that all files in the `listener` directory are required and run with an `io` object as the parameter. The whole `src/listeners/index.js` is being exported as a function to ensure that we only run the module when we need, and that the `io` parameter is being passed down.
+
+With this arrangement, subsequent listeners would only require us to create them a file inside of `src/listeners` directory, have a function as the main export, and accept io as the sole parameter.
+
+Next, we have to require the `src/listener/index.js` in the `src/index.js` file. To do this, the `src/index.js` file will look like this.
+
+```js
+// Requires the listener directory(index.js file)
+const initListeners = require("./listeners");
+var app = require("express")();
+var http = require("http").createServer(app);
+
+var io = require("socket.io")(http);
+
+app.get("/", function(req, res) {
+  res.send("<h1>Socket IO project folder setup</h1>");
+});
+
+// Calls it with the io object.
+initListeners(io);
+
+http.listen(3000, function() {
+  console.log("listening on *:3000");
+});
 ```

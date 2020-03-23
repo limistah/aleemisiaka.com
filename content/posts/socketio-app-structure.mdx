@@ -256,9 +256,9 @@ module.exports = io => {
 
 ```
 
-The code above is similar to that which is defined in `src/listeners/index.js`, the difference in this case is that we are exporting all the files in the `src/events` folder aside the `index.js` file. Awesome!
+The code above is similar to that which we defined in `src/listeners/index.js`, the difference in this case is that we are exporting all the files in the `src/events` folder aside the `index.js` file. Awesome!
 
-Next, let's define our `connectedEvent` which will emit a connected event to the client once the socket has been connected. So, we will create a new file `src/events/connected.js`
+Next, let's define our _connected_ event which will emit to the client once the socket has been connected. So, we will create a new file `src/events/connected.js` and have it look like this
 
 ```js
 const event = (socket) => {
@@ -269,3 +269,34 @@ const event = (socket) => {
 
 module.exports = event
 ```
+
+Simple! We have bootstrapped our event files with separation of concerns being considered.
+
+The next question, how do we consume events in our listeners with this structure. For this case, let's make a modification to `src/listeners/connected.js` to be:
+
+```js
+const { connectedEvent } = require("../events");
+
+module.exports = function(io) {
+  io.on("connection", function(socket) {
+    connectedEvent(socket);
+  });
+};
+```
+First we import the connectedEvent from the events module, and in line 5 we move changed calling emit to calling the imported event module.
+
+Awesome, right?
+
+Next, we can focus on building our application around this ultra-simple architecture and still be able to maintain it in the future.
+
+---
+
+## Conclusion
+
+In this post, we have been able to bootstrap a socketio application, ensure that we have separation of concerns all through.
+
+We could add more imporovement by ensuring that the names of the events comes from a single file. This can assist us to have consistency and reduce the efforst when it is time for documentation.
+
+Sometime, we will focus a post on how to ensure that we persist the socket object after it has been intialized.
+
+Keep hacking, wash your hands regularly, stay safe, stay at home! 

@@ -1,9 +1,10 @@
 ---
-title: SocketIO - App structure and architecture.
+title: SocketIO - App structure and architecture
 date: 2020-03-04
 tags: [JS]
 ---
 ## Introduction
+
 SocketIO is a JavaScript library that makes the lives of developers so easier when dealing with web socket and socket programming. This is the fact that SocketIO has abstracted out all the low level and tedious steps that are associated with setting up a socket server and client; it has made the question of programmers to be “How can I structure my application.”
 
 Whilst I have done different types of socket implementations, I will walk us through a setup that has always work for me and has proven to be the best in cases that I have had to use SocketIO.
@@ -128,7 +129,7 @@ io.on('someEventName_3', function (socket) {
 //...
 ```
 
-Funny enough, some handlers for some listeners can get so large. So, what do we do?
+Interesting to not is that some handlers for some listeners can get so large. So, what do we do?
 
 This is what we are trying to solve in this post. Firstly, let's create a folder for our listeners and add an `index.js` file into it.
 
@@ -187,7 +188,7 @@ In the above code, we are only trying to ensure that all files in the `listener`
 
 With this arrangement, subsequent listeners would only require us to create them a file inside of `src/listeners` directory, have a function as the main export, and accept io as the sole parameter.
 
-Next, we have to require the `src/listener/index.js` in the `src/index.js` file. To do this, the `src/index.js` file will look like this.
+Next, we have to import the `src/listeners/index.js` in the `src/index.js` file. To do this, the `src/index.js` file will look like this.
 
 ```js
 // Requires the listener directory(index.js file)
@@ -207,4 +208,64 @@ initListeners(io);
 http.listen(3000, function() {
   console.log("listening on *:3000");
 });
+```
+
+And so far, we have just bootstrapped event listeners to events that could be emitted from the client.
+
+When we need to add a new event listener, we just have to define it in a file in the `/src/listeners` directory, its full path should be: `src/listeners/someNewEvent.js`, while its basic content would be:
+
+```js
+module.exports = function (io) {
+  io.on("someEventFromClient", function (socket) {
+    socket.emit("responseToSomeEventFromClient", {data: {}, socket})
+  })
+}
+```
+That is all about listeners, next is for our events.
+
+We have seen that in the listeners we were sending some events back to the client. This might suffice for a very small application, let's consider a scenario:
+
+>>> Suppose when a new event is sent to the server, we need to pull the user information from the database, make some adjustments to it and send them a new copy of the user data.
+
+In the scenario above, it is sufficing enough to have all the user manipulation in the listener for the event, but giving the user the updated information is a task that should be done inside of an event emitter, major reason being that we can reuse this event emitter and also maintain consistent naming across the codebase (both frontend and backend)
+
+Getting our hands cleaned away from COVID-19, firstly, let's define a folder like so `src/events`, and add our index file. The content of the event should look like this:
+
+```js
+// src/events/index.js
+
+module.exports = io => {
+  const fs = require("fs");
+  const path = require("path");
+
+  const eventsPath = path.resolve(__dirname);
+
+  fs.readdir(eventsPath, (err, files) => {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+
+    files.map(fileName => {
+      if (fileName !== "index.js") {
+        module.exports[fileName] = require(path.resolve(__dirname, fileName));
+      }
+    });
+  });
+};
+
+```
+
+The code above is similar to that which is defined in `src/listeners/index.js`, the difference in this case is that we are exporting all the files in the `src/events` folder aside the `index.js` file. Awesome!
+
+Next, let's define our `connectedEvent` which will emit a connected event to the client once the socket has been connected. So, we will create a new file `src/events/connected.js`
+
+```js
+const event = (socket) => {
+  // Do some interesting thing inside of this place!
+
+  socket.emit("socker", {socket, /* Some other interesting data, maybe*/})
+}
+
+module.exports = event
 ```

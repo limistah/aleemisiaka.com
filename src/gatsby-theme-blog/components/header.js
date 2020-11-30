@@ -5,7 +5,7 @@ import Switch from "./switch"
 import sun from "../../../content/assets/sun.png"
 import moon from "../../../content/assets/moon.png"
 
-const NavLink = props => {
+const NavLink = (props) => {
   return (
     <Link
       to={props.to}
@@ -57,7 +57,7 @@ const uncheckedIcon = (
 export default ({ children, title, ...props }) => {
   const [colorMode, setColorMode] = useColorMode()
   const isDark = colorMode === `dark`
-  const toggleColorMode = e => {
+  const toggleColorMode = (e) => {
     setColorMode(isDark ? `light` : `dark`)
   }
 
@@ -87,10 +87,7 @@ export default ({ children, title, ...props }) => {
           }}
         >
           <Link to="/" title="Home">
-            <img
-              alt="UI Logo"
-              src="https://contrast.now.sh/fff/663399?size=48&fontSize=2&baseline=2&fontWeight=900&radius=32&text=AI&"
-            />
+            <span>Aleem Isiaka</span>
             <span
               sx={{
                 position: "absolute",

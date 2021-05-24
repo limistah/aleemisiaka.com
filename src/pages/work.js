@@ -1,10 +1,13 @@
 import React from "react"
 import Layout from "../gatsby-theme-blog/components/layout"
 import { Styled, css } from "theme-ui"
+import { useStaticQuery, graphql } from "gatsby"
 
 export default () => {
+  const { titlePhoto } = useStaticQuery(workQuery)
+
   return (
-    <Layout>
+    <Layout authorPhoto={titlePhoto}>
       <Styled.h2>Work/Projects</Styled.h2>
       <Styled.hr />
       <Styled.h3>
@@ -133,3 +136,22 @@ export default () => {
     </Layout>
   )
 }
+
+const workQuery = graphql`
+  query WorkQuery {
+    authorPhoto: file(absolutePath: { regex: "/author.(jpeg|jpg|gif|png)/" }) {
+      childImageSharp {
+        fixed(width: 200, height: 200) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    titlePhoto: file(absolutePath: { regex: "/author.(jpeg|jpg|gif|png)/" }) {
+      childImageSharp {
+        fixed(width: 40, height: 40) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`

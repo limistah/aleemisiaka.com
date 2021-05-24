@@ -4,6 +4,7 @@ import { css, useColorMode, jsx } from "theme-ui"
 import Switch from "./switch"
 import sun from "../../../content/assets/sun.png"
 import moon from "../../../content/assets/moon.png"
+import Image from "gatsby-image"
 
 const NavLink = (props) => {
   return (
@@ -54,7 +55,7 @@ const uncheckedIcon = (
   />
 )
 
-export default ({ children, title, ...props }) => {
+export default ({ children, title, authorPhoto, author, ...props }) => {
   const [colorMode, setColorMode] = useColorMode()
   const isDark = colorMode === `dark`
   const toggleColorMode = (e) => {
@@ -87,7 +88,16 @@ export default ({ children, title, ...props }) => {
           }}
         >
           <Link to="/" title="Home">
-            <span>Aleem Isiaka</span>
+            <span>
+              {/* <Image
+                fixed={authorPhoto.childImageSharp.fixed}
+                alt={author}
+                css={{
+                  width: "10px",
+                  height: "10px",
+                }}
+              /> */}
+            </span>
             <span
               sx={{
                 position: "absolute",

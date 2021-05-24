@@ -5,6 +5,7 @@ import PostFooter from "../components/post-footer"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { useStaticQuery, graphql } from "gatsby"
 
 const Post = ({
   data: {
@@ -20,8 +21,11 @@ const Post = ({
   let filename = post.slug.split("/")
   filename = filename[2]
   const tags = post.tags.join(",")
+
+  const { titlePhoto } = useStaticQuery(postQuery)
+
   return (
-    <Layout location={location} title={title}>
+    <Layout location={location} title={title} authorPhoto={titlePhoto}>
       <SEO title={post.title} description={post.excerpt} />
       <main>
         <Styled.h1>{post.title}</Styled.h1>
@@ -67,5 +71,17 @@ const Post = ({
     </Layout>
   )
 }
+
+const postQuery = graphql`
+  query PostIndexQuery {
+    titlePhoto: file(absolutePath: { regex: "/author.(jpeg|jpg|gif|png)/" }) {
+      childImageSharp {
+        fixed(width: 200, height: 200) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`
 
 export default Post

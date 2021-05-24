@@ -9,13 +9,13 @@ export default () => {
   const data = useStaticQuery(indexQuery)
   const {
     authorPhoto,
+    titlePhoto,
     site: {
       siteMetadata: { social, author },
     },
   } = data
-  console.log(authorPhoto)
   return (
-    <Layout>
+    <Layout seo={{ title: "Home" }} authorPhoto={titlePhoto}>
       <Styled.div css={css({ textAlign: "center" })}>
         <Image
           fixed={authorPhoto.childImageSharp.fixed}
@@ -29,12 +29,12 @@ export default () => {
           })}
         />
         <Styled.p css={css({ fontSize: "30", textAlign: "center" })}>
-          Hi, I'm <strong css={css({ color: "primary" })}>Aleem Isiaka</strong>,
-          a{" "}
-          <span css={css({ textDecoration: "underline" })}>
-            software developer
-          </span>{" "}
-          and <span css={css({ textDecoration: "underline" })}>blogger.</span>
+          Hi, I'm{" "}
+          <strong css={css({ color: "primary" })}>Aleem Isiaka (AI)</strong>
+          <br />
+          <span css={css({ textDecoration: "underline" })}>Engineer</span>
+          {" && "}
+          <span css={css({ textDecoration: "underline" })}>writer</span>
         </Styled.p>
 
         <Styled.p css={css({ textAlign: "center" })}>
@@ -55,7 +55,7 @@ export default () => {
 
         <Styled.p css={css({ textAlign: "center" })}>
           Follow me:{" "}
-          {social.map(details => (
+          {social.map((details) => (
             <a href={details.url} key={details.name}>
               {details.name}{" "}
             </a>
@@ -71,6 +71,8 @@ const indexQuery = graphql`
     site {
       siteMetadata {
         author
+        title
+        description
         social {
           name
           url
@@ -80,6 +82,13 @@ const indexQuery = graphql`
     authorPhoto: file(absolutePath: { regex: "/author.(jpeg|jpg|gif|png)/" }) {
       childImageSharp {
         fixed(width: 200, height: 200) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    titlePhoto: file(absolutePath: { regex: "/author.(jpeg|jpg|gif|png)/" }) {
+      childImageSharp {
+        fixed(width: 40, height: 40) {
           ...GatsbyImageSharpFixed
         }
       }

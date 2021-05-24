@@ -4,7 +4,14 @@ module.exports = {
       resolve: `gatsby-theme-blog`,
       options: { basePath: "/blog", rootPath: "/" },
     },
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        options: {
+          icon: "content/assets/avatar.png",
+        },
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -39,10 +46,10 @@ module.exports = {
   ],
   // Customize your site metadata:
   siteMetadata: {
-    title: `AI`,
+    title: `Aleem Isiaka AI`,
     author: `Aleem Isiaka`,
-    authorBio: `Double Engineer >>> Software & Machines | Student & Learner`,
-    description: `Double Engineer >>> Software & Machines | Student & Learner`,
+    authorBio: `Software Engineer >>> Computer && Machines | Learner && Writer`,
+    description: `Software Engineer >>> Computer && Machines | Learner && Writer`,
     social: [
       {
         name: `twitter`,

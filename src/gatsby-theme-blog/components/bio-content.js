@@ -11,7 +11,7 @@ export default ({ author, authorBio }) => (
     <span role="img" aria-labelledby="img">
       💗
     </span>{" "}
-    by <Styled.a href="http://aleemisiaka.com/about">{author}</Styled.a>
+    by <Styled.a href="https://aleemisiaka.com/about">{author}</Styled.a>
     .
     <br />
     {authorBio}

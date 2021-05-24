@@ -1,11 +1,12 @@
 import React from "react"
 import Layout from "../gatsby-theme-blog/components/layout"
 import { Styled, css } from "theme-ui"
-import { Link } from "gatsby"
+import { Link, useStaticQuery } from "gatsby"
 
 export default () => {
+  const { titlePhoto } = useStaticQuery(aboutQuery)
   return (
-    <Layout>
+    <Layout authorPhoto={titlePhoto}>
       <div
         css={css({
           display: "grid",
@@ -188,3 +189,15 @@ export default () => {
     </Layout>
   )
 }
+
+const aboutQuery = graphql`
+  query AboutQuery {
+    titlePhoto: file(absolutePath: { regex: "/author.(jpeg|jpg|gif|png)/" }) {
+      childImageSharp {
+        fixed(width: 40, height: 40) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`

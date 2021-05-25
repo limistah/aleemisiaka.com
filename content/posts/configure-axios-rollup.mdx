@@ -1,6 +1,6 @@
 ---
 title: Configure Rollup to bundle Axios module
-date: 2020-05-25
+date: 2021-05-25
 tags: [rollup, axios, bundlers]
 description: Make axios work with rollup
 ---
@@ -9,9 +9,8 @@ description: Make axios work with rollup
 
 2. Add it to the plugins inside `rollup.config.js`
 
-// Rollup configuration
-
 ```js
+// Rollup configuration
 ...
 plugins: [
     rollupNodeResolve({ jsnext: true, preferBuiltins: true, browser: true }),

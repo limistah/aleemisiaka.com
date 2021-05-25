@@ -13,7 +13,11 @@ description: Make axios work with rollup
 // Rollup configuration
 ...
 plugins: [
-    rollupNodeResolve({ jsnext: true, preferBuiltins: true, browser: true }),
+    rollupNodeResolve({
+      jsnext: true,
+      preferBuiltins: true,
+      browser: true
+    }),
     rollupJson(),
     ...
 ]

@@ -14,8 +14,11 @@ Can you interpreter this CSS selector query?
 
 Let me think like you would: Select every `P` element that has the class name of title and apply the color red to the first of its type.
 
-```
-<body>   <p>Lorem Ipsum</p>   <p class="title">Paragraph 2 (show red)</p> </body>
+```html
+<body>
+  <p>Lorem Ipsum</p>
+  <p class="title">Paragraph 2 (shows in red color)</p>
+</body>
 ```
 
 You think you’re right.
@@ -24,11 +27,23 @@ You think you’re right.
 
 What happens with the below:
 
-```
-p.paragraph-1:first-child {   color: green }   <div>   <p class="paragraph-1">     <span class="span1">This is the title</span>     <span class="span2"> Shouldn't be the title </span>   </p> </div>
+```html
+<style>
+  p.paragraph-1:first-child {
+    color: green;
+  }
+</style>
+<div>
+  <p class="paragraph-1">
+    <span class="span1">This is the title</span>
+    <span class="span2"> Shouldn't be the title </span>
+  </p>
+</div>
 ```
 
-You would expect the SPAN with the class name `span1` should have the color green. To you, the query reads: Select the first child of every `P` tag that has a class name of `paragraph-1`, that is not correct!
+You would expect the `SPAN` with the class name `span1` should have the color green.
+
+To you, the query reads: _Select the first child of every `P` tag that has a class name of `paragraph-1`, that is not correct!_
 The query correctly reads:
 Select every P tag with a class name of `paragraph-1` and IT IS THE FIRST CHILD of its parent.
 
@@ -38,7 +53,7 @@ To better understand Structural selectors in CSS, we have to consider the query 
 
 Structural selectors talk about the position of that element itself.
 
-```
+```html
 <p>
     <h1>1</h1>
     <h1>2</h1>

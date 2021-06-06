@@ -50,7 +50,11 @@ What happens with the below:
 
 You would expect the `SPAN` with the class name `span1` should have the color green.
 
-To you, the query reads: _Select the first child of every `P` tag that has a class name of `paragraph-1`,_ that is not correct!
+To you, the query reads:
+
+> _Select the first child of every `P` tag that has a class name of `paragraph-1`,_
+
+Well,that is not correct!
 
 The query correctly reads:
 
@@ -75,7 +79,7 @@ For the structure above, `h1:first-child` would pick the first `h1`, `h1:last-ch
 
 The beauty of structural selectors is that page structures are stylable regardless of their complexity.
 
-In addition, the only child of an element, empty elements, any element that is a child to an element but existing at an index, and more are stylable, which is powerful!
+For example, the only child of an element, empty elements, any element that is a child to an element but existing at an index, and more are stylable, which is powerful!
 
 ## Ref List
 
@@ -95,6 +99,6 @@ Reference the list below to understand structural selectors proper:
 
 Interesting right? Play with it [here](https://codepen.io/ihaleem/pen/BaWxRwE).
 
-Take home: Structural selectors apply themselves to the selector to help us style an element at a specific position in the HTML.
+Take home: Structural selectors apply themselves to the selected element to help us style an element existing at a specific position in the HTML.
 
 [au revoir!](https://translate.google.com/?sl=auto&tl=en&text=au%20revoir&op=translate)

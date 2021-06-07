@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 
 export default ({ children, ...props }) => (
   <Styled.root>
-    <SEO title={props.seo?.title} />
+    <SEO title={props.seo?.title} description={props.seo?.description} />
 
     <Header {...props} />
     <Styled.hr css={css({ m: 0 })} />

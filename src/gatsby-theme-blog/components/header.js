@@ -4,7 +4,6 @@ import { css, useColorMode, jsx } from "theme-ui"
 import Switch from "./switch"
 import sun from "../../../content/assets/sun.png"
 import moon from "../../../content/assets/moon.png"
-import Image from "gatsby-image"
 
 const NavLink = (props) => {
   return (

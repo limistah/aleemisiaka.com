@@ -6,9 +6,13 @@ category: CSS
 excerpt: Handle some user events without JavaScript
 ---
 
-Without JavaScript, CSS can make dynamic UI possible with its user action selectors.
+Without JavaScript, dynamic UI is possible with **just** CSS action class selectors.
 
-For example, A the help for the input element is only visible when its input is focused.
+## Case study
+
+> Help text for input element which is only visible when the input is focused.
+
+### The HTML
 
 ```html
 <div class="input-cont">
@@ -18,6 +22,8 @@ For example, A the help for the input element is only visible when its input is 
 ```
 
 To achieve the above, a `span` holding the help text in a `data-help` attribute as a sibling to the actual input. Both the input and the span are children to a parent div with class name `input-cont`.
+
+### The CSS
 
 The container would help to proper place the content, so a position relative is applied. Since multiple inputs can exist on a page, a margin-bottom is added to give a visual cue and separation.
 
@@ -32,13 +38,15 @@ input {
 }
 ```
 
-To achieve toggling on focused, we would use the before pseudo element for an element. Since input is not a container element, therefore can not have a before and after pseudo elements, we would use the span in its place.
+#### Toggling the help text
 
-The `+`(direct sibling) selector can achieve selecting an element that lives under the same parent as the base selector.
+Instead of additional element to hold the text, the ::before pseudo element is already available for container elements.
 
-Here, the input and the span.help lives under the same parent, so `input+.help` gets the span.help element, and the `::before` gives access to its pseudo selector.
+`<input />` elements are not container which makes it difficult for this purpose, a span is placed next to the input element to provide the flexibility that ::before, ::after pseudo elements provide.
 
-The `z-index: -2` ensure that the `::before` pseudo element stay behind the input field, also, the content `property` is not set, yet not to make the element visible immediately.
+The `+`(direct sibling) selector can achieve selecting an element that lives under the same parent as the base selector. Since the input and the span.help lives under the same parent, so `input+.help` gets the `span.help` element, and the `::before` gives access to its pseudo selector.
+
+To ensure that the `::before` pseudo element stay behind the input field, the `z-index: -2` is applied to it, also, the content `property` is not set at the initial state of the element, making the element hidden by default.
 
 ```css
 input + .help::before {

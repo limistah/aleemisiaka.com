@@ -8,11 +8,11 @@ excerpt: Handle some user events without JavaScript
 
 Without JavaScript, dynamic UI is possible with **just** CSS action class selectors.
 
-## Case study
+### Case study
 
-> Help text for input element which is only visible when the input is focused.
+> _Help text for input element which is only visible when the input is focused._
 
-### The HTML
+## The HTML
 
 ```html
 <div class="input-cont">
@@ -23,7 +23,7 @@ Without JavaScript, dynamic UI is possible with **just** CSS action class select
 
 To achieve the above, a `span` holding the help text in a `data-help` attribute as a sibling to the actual input. Both the input and the span are children to a parent div with class name `input-cont`.
 
-### The CSS
+## The interaction(CSS)
 
 The container would help to proper place the content, so a position relative is applied. Since multiple inputs can exist on a page, a margin-bottom is added to give a visual cue and separation.
 
@@ -38,7 +38,7 @@ input {
 }
 ```
 
-#### Toggling the help text
+### The Structure
 
 Instead of additional element to hold the text, the ::before pseudo element is already available for container elements.
 
@@ -61,6 +61,8 @@ input + .help::before {
   z-index: -2;
 }
 ```
+
+### Toggling the help text
 
 To show the help text when an element is hidden, the `:focus` psuedo selector is used to select an input that is focused, then the sibling selecor gives access to the `span.help` element, which makes the `span.help::before` pseudo element stylable.
 

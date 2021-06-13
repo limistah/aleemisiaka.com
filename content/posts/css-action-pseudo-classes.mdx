@@ -40,7 +40,7 @@ Here, the input and the span.help lives under the same parent, so `input+.help` 
 
 The `z-index: -2` ensure that the `::before` pseudo element stay behind the input field, also, the content `property` is not set, yet not to make the element visible immediately.
 
-````css
+```css
 input + .help::before {
   bottom: 50%;
   left: 0;
@@ -59,7 +59,7 @@ To show the help text when an element is hidden, the `:focus` psuedo selector is
 Here, the content is set by picking it from the `data-help` attribute on the span.help element, a final `z-index: 0` is applied to bring the `span.help::before` element on top of the input field, while the `bottom: 60%` pushes the element downward below the input field to avoid overlapping.
 
 ```css
-input:focus+.help::before {
+input:focus + .help::before {
   content: attr(data-help);
   opacity: 1;
   filter: blur(0);
@@ -67,7 +67,7 @@ input:focus+.help::before {
   z-index: 0;
   font-size: 12px;
 }
-````
+```
 
 Find the above code on [codepen.io](https://codepen.io/ihaleem/pen/NWpOzZB)
 

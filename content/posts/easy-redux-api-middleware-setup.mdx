@@ -1,7 +1,8 @@
 ---
 title: Easy Network Requests using  Redux Actions
-date: 2019-05-15
+date: 2021-07-17
 tags: [JavaScript, React, Redux]
+excerpt: Use Redux API middleware to handle your network. Also learn to create actions the easy way.
 ---
 
 There has been a time when we might want to make a network request when a Redux action is dispatched. It gets a little interesting if we want to carry out actions if the request is successful and another if the request fails. While `redux-sage` and `thunk` make asynchronous actions easy to work with, there is an alternative and sure easy way to do the same and a little more.
@@ -44,8 +45,8 @@ We will have to clean up the `src/App.js` file for us to be able to render the e
 To make the `src/App.js` file looks like:
 
 ```javascript
-import React from "react";
-import "./App.css";
+import React from "react"
+import "./App.css"
 
 function App() {
   return (
@@ -53,10 +54,10 @@ function App() {
       <button className="request-btn">Make API Request</button>
       <div className="response-container">API Request Response</div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
 ```
 
 The button should look a bit fancier, we can add a little bit of CSS to oursrc/index.css file:
@@ -91,6 +92,7 @@ Few styles won't be bad for our response-container too:
   text-align: left;
 }
 ```
+
 We should have the same screen as below:
 
 ![Camping](../assets/first-redux-api-middleware.png)
@@ -98,62 +100,63 @@ We should have the same screen as below:
 ### Redux integration
 
 Next, we install redux with npm:
+
 ```bash
 npm install --save redux react-redux
 ```
 
-We can then create `src/store/index.js` to bootstrap our redux store. 
+We can then create `src/store/index.js` to bootstrap our redux store.
 
 ```javascript
-import { createStore } from "redux";
-import reducer from "./reducer";
+import { createStore } from "redux"
+import reducer from "./reducer"
 
-const initialState = {};
+const initialState = {}
 
 const initializeStore = () => {
-  createStore(reducer, initialState);
-};
-module.exports = initializeStore;
+  createStore(reducer, initialState)
+}
+module.exports = initializeStore
 ```
 
 And src/store/reducers/apiResponse.js with:
 
 ```javascript
-import defaultState from "../defaultState";
-import types from "../types";
+import defaultState from "../defaultState"
+import types from "../types"
 
 const appStatus = (state = defaultState.apiResponse, action) => {
   switch (action.type) {
     case types.SET_RESPONSE_STATUS:
-      return { ...state, status: action.payload };
+      return { ...state, status: action.payload }
     case types.SET_RESPONSE_DATA:
-      return { ...state, data: action.payload };
+      return { ...state, data: action.payload }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default appStatus;
+export default appStatus
 ```
 
 Also, can update update `src/store/reducers/apiResponse.js` to look like:
 
 ```javascript
-import defaultState from "../defaultState";
-import types from "../types";
+import defaultState from "../defaultState"
+import types from "../types"
 
 const appStatus = (state = defaultState.apiResponse, action) => {
   switch (action.type) {
     case types.SET_RESPONSE_STATUS:
-      return { ...state, status: action.payload };
+      return { ...state, status: action.payload }
     case types.SET_RESPONSE_DATA:
-      return { ...state, data: action.payload };
+      return { ...state, data: action.payload }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default appStatus;
+export default appStatus
 ```
 
 The intial and default state (at `src/store/defaultState.js`) should look like:
@@ -162,15 +165,15 @@ The intial and default state (at `src/store/defaultState.js`) should look like:
 const state = {
   apiResponse: {
     status: 0,
-    data: {}
+    data: {},
   },
   appStatus: {
     authenticated: false,
-    makingRequest: false
-  }
-};
+    makingRequest: false,
+  },
+}
 
-export default state;
+export default state
 ```
 
 While the `src/store/types.js` exports object with the redux types:
@@ -180,19 +183,20 @@ export default {
   SET_APP_AUTHENTICATED: "SET_APP_AUTHENTICATED",
   SET_APP_MAKING_REQUEST: "SET_APP_MAKING_REQUEST",
   SET_RESPONSE_STATUS: "SET_RESPONSE_STATUS",
-  SET_RESPONSE_DATA: "SET_RESPONSE_DATA"
-};
+  SET_RESPONSE_DATA: "SET_RESPONSE_DATA",
+}
 ```
 
 The reducer should also be updated to implement combineReducers as we are now exporting our reducers in modules. The reducer should look like this:
+
 ```javascript
-import { combineReducers } from "redux";
-import appStatus from "./reducers/appStatus";
-import apiResponse from "./reducers/apiResponse";
+import { combineReducers } from "redux"
+import appStatus from "./reducers/appStatus"
+import apiResponse from "./reducers/apiResponse"
 
-const reducer = combineReducers({ appStatus, apiResponse });
+const reducer = combineReducers({ appStatus, apiResponse })
 
-export default reducer;
+export default reducer
 ```
 
 Part of my React/Redux structure is to have files that exports my redux actions. The functions could do any side effects and receive arbitrary arguments, what I mind is that they return a basic redux function ready for dispatch.
@@ -200,6 +204,7 @@ Part of my React/Redux structure is to have files that exports my redux actions.
 In this case, I have `src/store/actions` directory to house all of my actions.
 
 ### Installing redux-api-middleware
+
 Traditionally, we can dispatch an async action which can be used to make network requests.
 
 Packages like `redux-thunk`, `redux-saga` make this seamless. But they come with a perk of sending the actual request explicity by the developer.
@@ -210,28 +215,29 @@ Coming from `redux-thunk` documentation:
 
 ```js
 function fetchSecretSauce() {
-  return fetch('https://www.google.com/search?q=secret+sauce');
+  return fetch("https://www.google.com/search?q=secret+sauce")
 }
 
 function makeASandwichWithSecretSauce(forPerson) {
-  return function(dispatch) {
+  return function (dispatch) {
     return fetchSecretSauce().then(
       (sauce) => dispatch(makeASandwich(forPerson, sauce)),
-      (error) => dispatch(apologize('The Sandwich Shop', forPerson, error)),
-    );
-  };
+      (error) => dispatch(apologize("The Sandwich Shop", forPerson, error))
+    )
+  }
 }
 
 const forPerson = {}
 dispatch(makeASandwichWithSecretSauce(forPerson))
 ```
-The above code is trying to `fetchSecretSauce`  for a person based on a certain parameter, before actually making the Sandwich. While this is nice, it does not take away the fact that, it should be smart enough to know when an action should make network requests or not.
+
+The above code is trying to `fetchSecretSauce` for a person based on a certain parameter, before actually making the Sandwich. While this is nice, it does not take away the fact that, it should be smart enough to know when an action should make network requests or not.
 
 How about, if we just have a setup that tells about the URL and method we want to call, and the middleware actually handles the error and success action for us automatically?
 
 We just tell it the actions that need to be dispatched, but under the hood, it makes network request, fetch data, then store to our redux store, is that not awesome enough?
 
-Introducing `redux-api-middleware`, an `npm` package that eases API calls  while dispatching a redux action.
+Introducing `redux-api-middleware`, an `npm` package that eases API calls while dispatching a redux action.
 
 ### Store setup for redux-api-middleware
 
@@ -254,6 +260,7 @@ npm install redux-api-middleware-dispatcher
 ```
 
 To better see how to use this library(`redux-api-middleware-dispatcher`), check out its [documentation](https://www.npmjs.com/package/redux-api-middleware-broker#docs)
+
 ## Conclusion
 
 The major advantage to use redux-api-middleware over the traditional async action is the single setup it provides, such that we don't have to keep calling dispatch each time a request is complete aside determining if it fails.

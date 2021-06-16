@@ -52,7 +52,7 @@ Using the addEvenListener to listen to the "message" event, any message broadcas
 
 ### Use cases
 
-This does not mean that the implementation is limited to service workers, think of two different parts of an application running at different execution contexts but need to pass information across to each other. BroadcastChannel API can be very useful to solve this.
+This does not mean that the BroadcastChannel is limited to service workers, think of two different parts of an application running at different execution contexts but need to pass information across to each other. BroadcastChannel API can be very useful to solve this.
 
 Scenarios like, keeping track of changes within a web app running in different tabs, like the logout button click. Also, keeping track of user interactions/updates from a remote server on a web app running in different tabs.
 

@@ -17,9 +17,38 @@ Here, the self variable `self` is a reserved keyword in a service worker context
 
 In the above snippet, all the clients that run the service worker are loaded, then the ``.postMessage` is called to send message directly to the original javascript runtime of the service worker.
 
+## The limitation
+
 Sometimes, the `clients.matchAll` method will return an empty list, meaning that there are no clients for the current service worker, which is actually not true!
 
-To facilitate this, we can use the `BroadcastChannel` API to send messages to and from a service worker context from a JavaScript context.
+```js
+self.clients.matchAll().then((clients) => {
+  console.log(clients) // [] -> No client, which is not true
+})
+```
+
+Or event using a waitUntil on an event object:
+
+```js
+const messaging = firebase.messaging()
+self.onmessage = (event) => {
+  event.waitUntil(
+    clients
+      .matchAll({
+        type: "window",
+      })
+      .then(function (clientList) {
+        console.log(clientList) // []
+      })
+  )
+}
+```
+
+And without the client object, it is impossible to send message to a browser JavaScript context.
+
+## A possible solution
+
+We can use the `BroadcastChannel` API to send messages to and from a service worker context from a JavaScript context.
 
 The `BroadcastChannel` API serves like an event Bus inside of a browser. It registers a channel that lives through out the entire lifecycle of the JavaScript runtime, and the channel would be able to send and receive messages regardless of where it is initiated or called.
 

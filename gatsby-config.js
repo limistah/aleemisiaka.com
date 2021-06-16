@@ -2,7 +2,12 @@ module.exports = {
   plugins: [
     {
       resolve: `gatsby-theme-blog`,
-      options: { basePath: "/blog", rootPath: "/" },
+      options: {
+        basePath: "/blog",
+        assetPath: "content/assets",
+        prismPreset: "prism-okaidia",
+        preset: false,
+      },
     },
     {
       resolve: `gatsby-plugin-sharp`,

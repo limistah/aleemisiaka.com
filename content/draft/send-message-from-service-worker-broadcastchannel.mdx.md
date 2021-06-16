@@ -1,6 +1,6 @@
 ---
 title: Send message from a service worker
-date: 2021-05-15
+date: 2021-06-15
 tags: [JavaScript, service-worker, browser-apis]
 excerpt: Easily communicate with Service Worker using BroadcastChannel API
 ---

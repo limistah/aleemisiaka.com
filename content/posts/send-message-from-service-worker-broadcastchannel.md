@@ -19,7 +19,48 @@ In the above snippet, all the clients that run the service worker are loaded, th
 
 Sometimes, the `clients.matchAll` method will return an empty list, meaning that there are no clients for the current service worker, which is not true!
 
-To facilitate this, we can use the `BroadcastChannel` API to send messages to and from a service worker context from a JavaScript context.
+```js
+self.clients.matchAll().then((clients) => {
+  clients.forEach((client) => client.postMessage({ msg: "Hello from SW" }))
+})
+```
+
+Here, the self variable `self` is a reserved keyword in a service worker context. It references the global scope of the current worker execution scope and has some interesting properties. It serves as the window of a browser JavaScript context.
+
+In the above snippet, all the clients that run the service worker would load, then the ``.postMessage` is called to send message directly to the original javascript runtime of the service worker.
+
+## A limitation
+
+Sometimes, the `clients.matchAll` method will return an empty list, meaning that there are no clients for the current service worker, which is not valid!
+
+```js
+self.clients.matchAll().then((clients) => {
+  console.log(clients) // [] -> No client, which is not true
+})
+```
+
+Or event using a waitUntil on an event object:
+
+```js
+const messaging = firebase.messaging()
+self.onmessage = (event) => {
+  event.waitUntil(
+    clients
+      .matchAll({
+        type: "window",
+      })
+      .then(function (clientList) {
+        console.log(clientList) // []
+      })
+  )
+}
+```
+
+And without the client object, it is impossible to send a message to a browser JavaScript context.
+
+## A possible solution
+
+We can use the `BroadcastChannel` API to send messages to and from a service worker context from a JavaScript context.
 
 The `BroadcastChannel` API serves as an event Bus inside of a browser. It registers a channel that lives throughout the entire lifecycle of the JavaScript runtime. The channel would be able to send and receive messages regardless of where it is initiated or called.
 
@@ -48,13 +89,15 @@ receiver.addEventListener("message", function eventListener(event) {
 })
 ```
 
-Using the addEvenListener to listen to the "message" event, any message broadcasted to the sw-messages channel would be handled by the code above.
+Any message broadcasted to the `sw-messages` channel would be handled through the `addEvenListener` method on the channel to listen to the "message" event,
 
 ### Use cases
 
-This example above does not mean that the implementation is limited to service workers; think of two different parts of an application running at different execution contexts but need to pass information across to each other. BroadcastChannel API can be handy to solve this.
+This example above does not mean that the implementation is limited to service workers; think of two different parts of an application running at different execution contexts but need to pass information across to each other. `BroadcastChannel` API can be handy to solve this.
 
-Scenarios like, keeping track of changes within a web app running in different tabs, like the logout button click. Also, keeping track of user interactions/updates from a remote server on a web app running in other tabs.
+Scenarios like:
+Keeping track of changes within a web app running in different tabs, like the logout button click.
+Also, keeping track of user interactions/updates from a remote server on a web app running in other tabs.
 
 ### Browser compatibility?
 

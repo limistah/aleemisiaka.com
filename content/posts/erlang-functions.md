@@ -1,12 +1,14 @@
 ---
 title: Erlang Functions
-date: 2019-12-31
-tags: [Erlang]
+date: 2021-06-21
+tags: [Erlang, pattern-matching]
+excerpt: Understand pattern matching and why it's important in Erlang programming
 ---
 
 When programming Erlang, you should think like you are writing an English essay. In Erlang, functions are not very different to what a traditional programming language offers, but they are written very differently in Erlang.
 
 To declare a function in the Erlang Repl, you will have to use the `fun` keyword.
+
 ```erlang
 Name = fun(X) -> X.
 ```
@@ -47,6 +49,7 @@ Map = fun([H|T],F) -> [ F(H) | map(F,T) ],
 %% 2,4,6,8,10,12,14,16,18
 Map([1,2,3,4,5,6,7,8,9], fun(X) -> 2 * X end).
 ```
+
 You should not worry your self with some of the syntax here, we will discuss them very shortly. What you should be concerned with is how we have been able to pass functions to another function call.
 
 ### BIFs

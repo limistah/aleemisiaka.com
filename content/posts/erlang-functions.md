@@ -2,7 +2,7 @@
 title: Erlang Functions
 date: 2021-06-21
 tags: [Erlang, pattern-matching]
-excerpt: Understand pattern matching and why it's important in Erlang programming
+excerpt: Create and use Erlang functions. Learn Erlang function overloading using pattern matching.
 ---
 
 When programming Erlang, you should think like you are writing an English essay. In Erlang, functions are not very different to what a traditional programming language offers, but they are written very differently in Erlang.

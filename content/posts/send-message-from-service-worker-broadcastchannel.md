@@ -5,7 +5,7 @@ tags: [JavaScript, service-worker, browser-apis]
 excerpt: Easily communicate with Service Worker using BroadcastChannel API
 ---
 
-Communication between service workers and the clients browser window can be achieved by easily doing:
+Communication between service workers and client browser s can be achieved easily by doing:
 
 ```js
 self.clients.matchAll().then((clients) => {
@@ -13,7 +13,7 @@ self.clients.matchAll().then((clients) => {
 }) // highlight-line What we are trying to do
 ```
 
-Sometimes, the `clients.matchAll` method will return an empty list, meaning that there are no clients for the current service worker, which is not true!
+Sometimes, the `clients.matchAll` method will return an empty list, meaning that there is no client for the current service worker, which is not true!
 
 ```js
 self.clients.matchAll().then((clients) => {
@@ -23,7 +23,7 @@ self.clients.matchAll().then((clients) => {
 
 Here, the self variable `self` is a reserved keyword in a service worker context. It references the global scope of the current worker execution scope and has some interesting properties. It serves as the window of a browser JavaScript context.
 
-In the above snippet, all the clients that run the service worker would load, then the ``.postMessage` is called to send message directly to the original javascript runtime of the service worker.
+In the above snippet, all the clients that run the service worker would load, then the `.postMessage` is called to send message directly to the original javascript runtime of the service worker.
 
 ## A limitation
 

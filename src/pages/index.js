@@ -5,17 +5,20 @@ import { Styled, css } from "theme-ui"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 
-export default () => {
+const Index = () => {
   const data = useStaticQuery(indexQuery)
   const {
     authorPhoto,
     titlePhoto,
     site: {
-      siteMetadata: { social, author },
+      siteMetadata: { social, author, description },
     },
   } = data
   return (
-    <Layout seo={{ title: "Home" }} authorPhoto={titlePhoto}>
+    <Layout
+      seo={{ title: "Home", description: description }}
+      authorPhoto={titlePhoto}
+    >
       <Styled.div css={css({ textAlign: "center" })}>
         <Image
           fixed={authorPhoto.childImageSharp.fixed}
@@ -95,3 +98,5 @@ const indexQuery = graphql`
     }
   }
 `
+
+export default Index

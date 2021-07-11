@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../gatsby-theme-blog/components/layout"
 import { Styled, css } from "theme-ui"
-import { Link, useStaticQuery } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 export default () => {
   const { titlePhoto } = useStaticQuery(aboutQuery)

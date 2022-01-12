@@ -82,11 +82,11 @@ Once the button is clicked, with the single thread nature of JavaScript, one wou
 - The event is registered against a `click` name, and the code for the `addEventListener` is executed.
 - Once it is executed, the function/handler should be triggered immediately in the `addEventListener` execution context
 
-As stated in the above, we expect all of those to happen in parallel. But, what happens there is that codes and functions are delegated to a later time when an actual action has happened. Recall the [High School Assignment](a-real-life-case-study) illustration we gave?
+As stated in the above, we expect all of those to happen in parallel. But, what happens there is that code and functions are delegated to a later time when an actual action has happened. Recall the [High School Assignment](a-real-life-case-study) illustration we gave?
 
 What happens is that:
 
-> Once the `click` event has been triggered on the button, the function would be executed. And this could happen any time in the future, but other codes could still run while waiting for this.
+> Once the `click` event has been triggered on the button, the function would be executed. And this could happen any time in the future, but other code could still run while waiting for this.
 
 #### Good Ol'days of AJAX
 
@@ -117,7 +117,7 @@ This AJAX feature utilized the model of event handling and was very easy to comp
 
 #### Callback Hell
 
-Does it mean hell in our codes/machines, well, not necessarily? It is something exciting to know some of its details.
+Does it mean hell in our code/machines, well, not necessarily? It is something exciting to know some of its details.
 
 ![Callback hell](../assets/callbackhell.png)
 
@@ -157,7 +157,7 @@ And looking at an example from the below image, we can see that it can get so un
 > > [**Eric Elliott**](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261):
 > > A promise is an object that may produce a single value some time in the future: either a resolved value, or a reason that it’s not resolved (e.g., a network error occurred).
 
-In JavaScript, Promises have made the life of programmers more easier in handling asynchronous codes. With Promises, most of the underlying problems like callback hells are waved out.
+In JavaScript, Promises have made the life of programmers more easier in handling asynchronous code. With Promises, most of the underlying problems like callback hells are waved out.
 
 Promises has a very interesting background in JavaScript, [Eric Elliott](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) gave has a great information about promises, regarding that, a promise could be constructed in a few lines of code:
 
@@ -249,7 +249,7 @@ There is more to Promises, this only gives a preamble and brief introduction to 
 
 It is not surprising to note that, for some unknown reasons that are best known to developers, they want Promises to be synchronous.
 
-They found themselves in a situation where they need the result of a Promise to be available before they proceed to the next chunk of code - Either it is a network request, or a result from an extensive math function, they just needed the result to be available right in the next line of their codes.
+They found themselves in a situation where they need the result of a Promise to be available before they proceed to the next chunk of code - Either it is a network request, or a result from an extensive math function, they just needed the result to be available right in the next line of their code.
 
 To solve this for them, the folks at [TC39](https://tc39.es/) gave us [Async/Await](https://github.com/tc39/ecmascript-asyncawait).
 
@@ -269,7 +269,7 @@ Looking closely at the code above, we could see that the `getNumber` function re
 
 No, we can not. JavaScript does not support making a global function an `async` function; the best we can do is wrap it in a containing function and make the inner function returns an `async` function. If we need a global function to be a Promise, it is best that we use a Promise constructor to define it.
 
-When we called `const result = await getNumber()`, we are telling the engine not to run any other code until we have the result from the Promise returned by `getNumber`, in this case, 20. If we omit `await` from that expression, following codes will run while running the Promise returned by `getNumber` in the background.
+When we called `const result = await getNumber()`, we are telling the engine not to run any other code until we have the result from the Promise returned by `getNumber`, in this case, 20. If we omit `await` from that expression, following code will run while running the Promise returned by `getNumber` in the background.
 
 In my honest opinion, I see `async` as syntactic sugar to constructing a Promise on the fly. If we would want to attempt to have the getNumber as a promise constructor instead of an `async/await` we would have:
 
@@ -293,7 +293,7 @@ As seen above, we can deduce that the underlying engine of JavaScript supports a
 
 As a solution to the challenge, Promise was introduced into the language, which was followed by the inclusion of Async/Await construct.
 
-In my honest opinion, writing Async/Await in my codebases has made my codes not just readable, but very predictable.
+In my honest opinion, writing Async/Await in my codebases has made my code not just readable, but very predictable.
 
 So, to asynchronous Javascript coding, I highly recommend understanding Promises and Async/Await construct if at all we want our _future self_ and _other developers_ to say a prayer when they see our code after we write it.
 

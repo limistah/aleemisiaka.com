@@ -105,32 +105,32 @@ We emit on the socket, as that socket needs to know about the event that just ha
 Having understood the basic concepts of Events and Listeners, it is so glaring that we can have all of the listener and events in just a file say the `src/index.js` file.
 
 Our code could be messed up and look more like this
-"`js
+
+```js
 //...
 
 // Listener 1
-io.on('someEventName_1', function (socket) {
-console.log("someEventName_1 with socketId: %s", socket.id)
-socket.emit("someEventName_1", {message: "Success"});
-//...
+io.on("someEventName_1", function (socket) {
+  console.log("someEventName_1 with socketId: %s", socket.id)
+  socket.emit("someEventName_1", { message: "Success" })
+  //...
 })
 
 // Listener 2
-io.on('someEventName_2', function (socket) {
-console.log("someEventName_2 with socketId: %s", socket.id)
-socket.emit("someEventName_2", {message: "Success"});
-//...
+io.on("someEventName_2", function (socket) {
+  console.log("someEventName_2 with socketId: %s", socket.id)
+  socket.emit("someEventName_2", { message: "Success" })
+  //...
 })
 
 // Listener 3
-io.on('someEventName_3', function (socket) {
-console.log("someEventName_3 with socketId: %s", socket.id)
-socket.emit("someEventName_3", {message: "Success"});
-//...
+io.on("someEventName_3", function (socket) {
+  console.log("someEventName_3 with socketId: %s", socket.id)
+  socket.emit("someEventName_3", { message: "Success" })
+  //...
 })
 
 //...
-
 ```
 
 Interesting to note is that some handlers for some listeners can get so large. So, what do we do?
@@ -140,7 +140,8 @@ This is what we are trying to solve in this post. Firstly, let's create a folder
 "`bash
 mkdir src/listeners
 touch ./src/listeners/index.js
-```
+
+````
 
 The `src/listeners` have distinct modules that export just a function and accept an `io` parameter, the socketIO object. The index file will be responsible for the initialization of these modular events files.
 
@@ -152,7 +153,7 @@ module.exports = function (io) {
     socket.emit("connected", socket)
   })
 }
-```
+````
 
 In the above module, we are exporting a function that accepts the `io` parameter. In the listener's body, we are trying to tell the socket that it has connected by emitting a `connected` event. Simple enough!
 

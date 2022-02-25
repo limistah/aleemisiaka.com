@@ -44,7 +44,7 @@ const Post = ({
 
         <Styled.a
           css={css({ my: 2, mr: 3 })}
-          href={`https://github.com/limistah/aleemisiaka.com/blob/master/content/posts/${filename}.mdx`}
+          href={`https://github.com/limistah/aleemisiaka.com/blob/main/content/posts/${filename}.mdx`}
         >
           <svg
             css={css({ verticalAlign: "middle", mr: 1 })}

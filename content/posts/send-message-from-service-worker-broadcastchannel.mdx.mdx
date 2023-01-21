@@ -1,11 +1,11 @@
 ---
 title: Send message from a service worker
-date: 2021-06-15
+date: 2023-01-22
 tags: [JavaScript, service-worker, browser-apis]
 excerpt: Easily communicate with Service Worker using BroadcastChannel API
 ---
 
-Communication between service workers and the clients browser window can be achieved by easily doing:
+Communication between service workers and the clients browser window can be achieved by simply doing:
 
 ```js
 self.clients.matchAll().then((clients) => {
@@ -13,9 +13,9 @@ self.clients.matchAll().then((clients) => {
 })
 ```
 
-Here, the self variable `self` is a reserved keyword in a service worker context. It references the global scope of the current worker execution scope and has some interesting properties. It serves as the window of a browser JavaScript context.
+> > > The variable `self` is a reserved keyword in a service worker context. It references the global scope of the current worker execution scope and has some useful properties. It is like the window object of a JavaScript browser context.
 
-In the above snippet, all the clients that run the service worker are loaded, then the ``.postMessage` is called to send message directly to the original javascript runtime of the service worker.
+In the above snippet, all the clients that run the service worker are loaded, then the `.postMessage` is called to send message directly to the original javascript runtime of the service worker.
 
 ## The limitation
 
@@ -68,7 +68,7 @@ Now, the channel can be used to send a message:
 broadCaster.postMessage({ message: "Hello from BroadcastChannel" })
 ```
 
-The broadcasted message can be consumed by:
+The broadcasted message can be consumed with:
 
 ```js
 const receiver = new BroadcastChannel("sw-messages")
@@ -81,7 +81,7 @@ Using the addEvenListener to listen to the "message" event, any message broadcas
 
 ### Use cases
 
-This does not mean that the BroadcastChannel is limited to service workers, think of two different parts of an application running at different execution contexts but need to pass information across to each other. BroadcastChannel API can be very useful to solve this.
+BroadcastChannel is not limited to service workers. It is mostly useful when two different parts of an application are running at different contexts but need to pass information across to each other.
 
 Scenarios like, keeping track of changes within a web app running in different tabs, like the logout button click. Also, keeping track of user interactions/updates from a remote server on a web app running in different tabs.
 

@@ -60,7 +60,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-favicons",
       options: {
-        logo: "./static/author.jpg",
+        logo: "./static/author.png",
         appName: "Aleem Isiaka",
         background: "#fff",
         icons: {

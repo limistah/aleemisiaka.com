@@ -37,7 +37,7 @@ const Index = () => {
           <br />
           <span css={css({ textDecoration: "underline" })}>Engineer</span>
           {" && "}
-          <span css={css({ textDecoration: "underline" })}>writer</span>
+          <span css={css({ textDecoration: "underline" })}>Writer</span>
         </Styled.p>
 
         <Styled.p css={css({ textAlign: "center" })}>

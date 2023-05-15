@@ -82,14 +82,14 @@ const indexQuery = graphql`
         }
       }
     }
-    authorPhoto: file(absolutePath: { regex: "/author.(jpeg|jpg|gif|png)/" }) {
+    authorPhoto: file(absolutePath: { regex: "/author.png/" }) {
       childImageSharp {
         fixed(width: 200, height: 200) {
           ...GatsbyImageSharpFixed
         }
       }
     }
-    titlePhoto: file(absolutePath: { regex: "/author.(jpeg|jpg|gif|png)/" }) {
+    titlePhoto: file(absolutePath: { regex: "/author.png/" }) {
       childImageSharp {
         fixed(width: 40, height: 40) {
           ...GatsbyImageSharpFixed

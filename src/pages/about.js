@@ -29,62 +29,20 @@ export default () => {
               <strong>State:</strong> Lagos
             </li>
             <li>
-              <strong>Profession:</strong> Software Developer
+              <strong>Profession:</strong> Software Engineer
             </li>
             <li>
-              <strong>Highest Education:</strong> HND (Mechanical Engineering)
+              <strong>Highest Education:</strong> BEng. (Mechanical Engineering)
             </li>
             <li>
               <strong>Links:</strong>{" "}
-              <a href="https://facebook.com/limistah">Facebook</a>{" "}
+              <a href="https://github.com/limistah">Github</a>{" "}
+              <a href="https://linkedin.com/in/limistah">LinkedIn</a>{" "}
               <a href="https://twitter.com/limistah">Twitter</a>{" "}
-              <a href="https://github.com/limistah">Github</a>
             </li>
           </ul>
         </div>
-        <div>
-          <h3>Employment History</h3>
-          <ul css={css({ listStyleType: "" })}>
-            <li>
-              <h4>Dating Kinky</h4>
-              <div css={css({ px: 3 })}>
-                <strong>Location:</strong> New York, US
-                <br />
-                <strong>Starting Position:</strong> Junior Frontend Web
-                Developer
-                <br />
-                <strong>Current Position:</strong> Full Stack Web Developer
-                <br />
-                <strong>Start/End Date</strong> Dec. 2017 - Present
-                <br />
-                <strong>Experience Summary</strong>: I learnt all that I could
-                say that I know about modern web development working with this
-                Company. Using state of the art technologies and working with
-                great minds helped me to gain a good insight about web
-                development
-              </div>
-            </li>
-            <li>
-              <h4>Africoders Network</h4>
-              <div css={css({ px: 3 })}>
-                <strong>Location:</strong> Lagos, Nigeria
-                <br />
-                <strong>Starting Position:</strong> Web Developer Intern
-                <br />
-                <strong>Leaving Position:</strong> Junior Web Developer
-                <br />
-                <strong>Start/End Date</strong> Dec. 2016 - Dec. 2017
-                <br />
-                <strong>Experience Summary</strong>: This is my own genesis as
-                far as web development and general programming is concerned. I
-                was previlege to watch senior developers code and mentor me
-                correcting my mistakes. My take home here was developing a web
-                application for a state government. It broadens my knowledge and
-                gave me the insight that I needed to move forward.
-              </div>
-            </li>
-          </ul>
-        </div>
+
         <div>
           <h3>Achievements</h3>
 

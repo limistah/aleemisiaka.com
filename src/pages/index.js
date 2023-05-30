@@ -17,7 +17,7 @@ const Index = () => {
   return (
     <Layout
       seo={{ title: "Home", description: description }}
-      authorPhoto={titlePhoto}
+      authorPhoto={authorPhoto}
     >
       <Styled.div css={css({ textAlign: "center" })}>
         <Image
@@ -85,13 +85,6 @@ const indexQuery = graphql`
     authorPhoto: file(absolutePath: { regex: "/author.png/" }) {
       childImageSharp {
         fixed(width: 200, height: 200) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    titlePhoto: file(absolutePath: { regex: "/author.png/" }) {
-      childImageSharp {
-        fixed(width: 40, height: 40) {
           ...GatsbyImageSharpFixed
         }
       }

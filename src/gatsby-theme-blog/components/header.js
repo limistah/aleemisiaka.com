@@ -4,7 +4,7 @@ import { css, useColorMode, jsx } from "theme-ui"
 import Switch from "./switch"
 import sun from "../../../content/assets/sun.png"
 import moon from "../../../content/assets/moon.png"
-
+import Image from "gatsby-image"
 const NavLink = (props) => {
   return (
     <Link
@@ -86,29 +86,26 @@ export default ({ children, title, authorPhoto, author, ...props }) => {
             order: [0, 1],
           }}
         >
-          <Link to="/" title="Home">
-            <span>
-              {/* <Image
+          <NavLink to="/" title="Home">
+            {/* <span>
+              <Image
                 fixed={authorPhoto.childImageSharp.fixed}
                 alt={author}
                 css={{
                   width: "10px",
                   height: "10px",
                 }}
-              /> */}
-            </span>
-            <span
-              sx={{
-                position: "absolute",
-                width: 1,
-                height: 1,
-                overflow: "hidden",
-                top: -9999,
-              }}
-            >
-              Home
-            </span>
-          </Link>
+              />
+            </span> */}
+            {/* sx={{
+               position: "absolute",
+               width: 1,
+               height: 1,
+               overflow: "hidden",
+               top: -9999,
+             }} */}
+            Home
+          </NavLink>
         </div>
         <div
           sx={{

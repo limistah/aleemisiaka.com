@@ -78,7 +78,7 @@ module.exports = {
   ],
   // Customize your site metadata:
   siteMetadata: {
-    siteUrl: "https://aleemisiaka.com",
+    siteUrl: "https://aleemisiaka.dev/",
     title: `Aleem Isiaka AI`,
     author: `Aleem Isiaka`,
     authorBio: `Software Engineer >>> Computer && Machines | Learner && Writer`,

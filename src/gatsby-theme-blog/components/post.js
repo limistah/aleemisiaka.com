@@ -62,7 +62,7 @@ const Post = ({
         </Styled.a>
         <Styled.a
           target="_blank"
-          href={`https://twitter.com/intent/tweet?hashtags=${tags}&original_referer=http://aleemisiaka.netlify.com&ref_src=twsrc%5Etfw&text=${post.title}+https://aleemisiaka.netlify.com/${post.slug}&tw_p=tweetbutton&url=aleemisiaka.netlify.com`}
+          href={`https://twitter.com/intent/tweet?hashtags=${tags}&original_referer=http://aleemisiaka.dev&ref_src=twsrc%5Etfw&text=${post.title}+https://aleemisiaka.dev/${post.slug}&tw_p=tweetbutton&url=aleemisiaka.netlify.com`}
         >
           Tweet
         </Styled.a>

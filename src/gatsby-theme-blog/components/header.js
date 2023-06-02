@@ -86,7 +86,7 @@ export default ({ children, title, authorPhoto, author, ...props }) => {
             order: [0, 1],
           }}
         >
-          <NavLink to="https://aleemisiaka.com/" title="Home">
+          <NavLink to="https://aleemisiaka.dev/" title="Home">
             {/* <span>
               <Image
                 fixed={authorPhoto.childImageSharp.fixed}

@@ -1,12 +1,10 @@
 ---
-title: Know the man pages
+title: Know the man(nual) pages
 date: 2023-06-18
 tags: [Linux, Sys-Admin, Devops]
 excerpt: Know the man pages, the different sections, and how to get help for a specific section
 
 ---
-
-# Know the Man Pages
 
 There are many ways to get help as a Linux administrator, manual pages are one of them as they are always close - accessible via the terminal. 
 

@@ -1,8 +1,9 @@
-
+---
 title: tar (child): xz: Cannot exec: No such file or directory
 date: 2023-07-10
 tags: [Linux, Sys-Admin, Devops]
 excerpt: Untar an xz compressed file
+---
 
 The error:
 ```bash

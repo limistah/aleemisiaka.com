@@ -2,6 +2,18 @@ module.exports = {
   flags: { DEV_SSR: false },
   plugins: [
     {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-HVZTY4XJ5F", // Google Analytics / GA
+        ],
+        pluginConfig: {
+          head: true,
+          anonymize_ip: true,
+        },
+      },
+    },
+    {
       resolve: `gatsby-theme-blog`,
       options: {
         basePath: "/blog",
@@ -32,21 +44,6 @@ module.exports = {
             },
           },
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        // The property ID; the tracking code won't be generated without it
-        trackingId: "G-HVZTY4XJ5F",
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: true,
-        // Setting this parameter is also optional
-        respectDNT: true,
-        // Any additional optional fields
-        sampleRate: 5,
-        siteSpeedSampleRate: 10,
-        cookieDomain: "aleemisiaka.dev",
       },
     },
     {

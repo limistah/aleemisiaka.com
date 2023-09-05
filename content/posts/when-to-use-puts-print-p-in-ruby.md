@@ -1,6 +1,6 @@
 ---
 title: When to use `puts`, `print` and `p` in Ruby
-date: 2023-06-20
+date: 2023-09-05
 tags: [Ruby, Variables, Software Development]
 excerpt: Distinguish by usage `p` `print` and `puts` methods in Ruby
 

@@ -12,19 +12,13 @@ Usually, programming languages have methods for printing out variables. Ruby is 
 
 The way `print(var)` works is basically converting its value to a string by calling the `to_s` method on the object(everything is an object in Ruby) before printing the value and returning `nil` to its caller.
 
-
----
 ```ruby
 num = 123
 print(num) # -> 123 => nil
 ```
----
-
 
 The `print` method can be easily used for concatenating strings
 
-
----
 ```ruby
 num = 123
 name = "Aleem"
@@ -38,13 +32,9 @@ print "."
 # outputs everything on a single line
 # -> The name of the boy is Aleem, and his tag ID is: 123
 ```
----
-
 
 Having `print` as the last operation in a method should be avoided if returning nil is not the desired value
 
-
----
 ```ruby
 def check_print 
 	print "This should print without a new line"
@@ -54,8 +44,6 @@ val = check_point
 # -> This should print withouit a new line
 # Now p val would return nil
 ```
----
-
 
 
 ### The `puts` method
@@ -64,7 +52,7 @@ val = check_point
 
 - **`puts` adds a new line character at the end of the printed value**
 
----
+
 ```ruby
 print "hello World"
 # -> Hello World
@@ -74,11 +62,11 @@ puts "Hello world"
 # ->
 # -> nil
 ```
----
+
 
 - **`puts` prints each element in an array on a new line**
 
----
+
 ```ruby
 arr = [1,2,3,4,5,6]
     
@@ -94,9 +82,6 @@ puts arr
 # -> 6
 # -> nil
 ```
----
-
-
 
 ### The `p` method
 
@@ -110,7 +95,6 @@ p STDERR
 puts STDERR
 # -> <IO:0x000000013f888e58>
 ```
----
 
 Notice that above we have printed the value of STDERR to the console. using the `p` method, the module that the constant belongs as well as its name is returned, while `puts` only returns the module and memory address of the STDERR constant.
 

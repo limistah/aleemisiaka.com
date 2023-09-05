@@ -1,4 +1,3 @@
-
 ---
 title: When to use puts, print and p in Ruby
 date: 2023-09-05

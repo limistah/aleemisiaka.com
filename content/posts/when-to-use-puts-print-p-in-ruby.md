@@ -98,7 +98,7 @@ puts arr
 
 ### The `p` method
 
-This method can be seen as a debugging tool. It prints more than just the value of a variable, it can print the memory, the object it belongs to. A good name befitting the p method is the variable `inspection` method.
+This method can be seen as a debugging tool. It prints more than just the value of a variable, it can print the memory, the object it belongs to. A good name befitting the `p` method is the variable _inspection_ method.
 
 ---
 ```ruby

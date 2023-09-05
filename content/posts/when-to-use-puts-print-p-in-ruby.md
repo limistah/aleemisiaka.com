@@ -1,8 +1,11 @@
 
+---
 title: When to use puts, print and p in Ruby
 date: 2023-09-05
 tags: [Ruby, Variables, Software Development]
 excerpt: Distinguish by usage 3 different methods for printing in Ruby
+
+---
 
 Usually, programming languages have methods for printing out variables. Ruby is not an exception. We will explore the 3 popular methods for printing variables in Ruby Programming language.
 
@@ -10,16 +13,16 @@ Usually, programming languages have methods for printing out variables. Ruby is 
 
 The way `print(var)` works is basically converting its value to a string by calling the `to_s` method on the object(everything is an object in Ruby) before printing the value and returning `nil` to its caller.
 
----
+
 ```ruby
 num = 123
 print(num) # -> 123 => nil
 ```
----
+
 
 The `print` method can be easily used for concatenating strings
 
----
+
 ```ruby
 num = 123
 name = "Aleem"

@@ -1,12 +1,12 @@
 ---
-title: When to use puts, print and p in Ruby
+title: When to use puts, print, and p in Ruby
 date: 2023-09-05
 tags: [Ruby, Variables, Software Development]
 excerpt: Distinguish by usage 3 different methods for printing in Ruby
 
 ---
 
-Usually, programming languages have methods for printing out variables. Ruby is not an exception. We will explore the 3 popular methods for printing variables in Ruby Programming language.
+Usually, programming languages have methods for printing out variables. Ruby is not an exception. We will explore the 3 popular methods for printing variables in the Ruby Programming language.
 
 ### The `print` method
 
@@ -93,8 +93,6 @@ val = check_point
 This method can be seen as a debugging tool. It prints more than just the value of a variable, it can print the memory, the object it belongs to. A good name befitting the p method is the variable `inspection` method.
 
 ```ruby
-str = "This is a boy"
-
 p STDERR
 # -> <IO:<STDERR>>
 

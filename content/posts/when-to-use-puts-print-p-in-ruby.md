@@ -64,13 +64,13 @@ val = check_point
 
 ---
 ```ruby
-    print "hello World"
-    # -> Hello World
-    # -> nil
-    puts "Hello world"
-    # -> Hello world
-    # ->
-    # -> nil
+print "hello World"
+# -> Hello World
+# -> nil
+puts "Hello world"
+# -> Hello world
+# ->
+# -> nil
 ```
 ---
 
@@ -78,19 +78,19 @@ val = check_point
 
 ---
 ```ruby
-  arr = [1,2,3,4,5,6]
+arr = [1,2,3,4,5,6]
     
-    print arr
-    # -> [1,2,3,4,5,6]
-    # -> nil
-    puts arr
-    # -> 1
-    # -> 2
-    # -> 3
-    # -> 4
-    # -> 5
-    # -> 6
-    # -> nil
+print arr
+# -> [1,2,3,4,5,6]
+# -> nil
+puts arr
+# -> 1
+# -> 2
+# -> 3
+# -> 4
+# -> 5
+# -> 6
+# -> nil
 ```
 ---
 

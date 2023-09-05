@@ -1,8 +1,10 @@
-
+---
 title: When to use puts, print, and p in Ruby
 date: 2023-09-05
 tags: [Ruby, Variables, Software Development]
 excerpt: Distinguish by usage 3 different methods for printing in Ruby
+
+---
 
 Usually, programming languages have methods for printing out variables. Ruby is not an exception. We will explore the 3 popular methods for printing variables in the Ruby Programming language.
 

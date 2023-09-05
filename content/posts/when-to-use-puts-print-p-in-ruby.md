@@ -50,7 +50,7 @@ val = check_point
 
 `puts` method is not so different from the `print` method except for two scenarios:
 
-- **`puts` adds a new line character at the end of the printed value**
+- _`puts` adds a new line character at the end of the printed value_
 
 
 ```ruby
@@ -64,7 +64,7 @@ puts "Hello world"
 ```
 
 
-- **`puts` prints each element in an array on a new line**
+- _`puts` prints each element in an array on a new line_
 
 
 ```ruby
@@ -87,7 +87,7 @@ puts arr
 
 This method can be seen as a debugging tool. It prints more than just the value of a variable, it can print the memory, the object it belongs to. A good name befitting the `p` method is the variable _inspection_ method.
 
----
+
 ```ruby
 p STDERR
 # -> <IO:<STDERR>>

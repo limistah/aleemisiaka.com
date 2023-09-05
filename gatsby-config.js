@@ -1,6 +1,19 @@
 module.exports = {
   flags: { DEV_SSR: false },
   plugins: [
+    `gatsby-plugin-offline`,
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        sitemap: "https://aleemisiaka.dev/sitemap/sitemap-0.xml",
+        policy: [
+          {
+            userAgent: "*",
+            allow: "/",
+          },
+        ],
+      },
+    },
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-google-gtag`,

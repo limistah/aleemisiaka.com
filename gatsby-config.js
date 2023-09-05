@@ -1,6 +1,7 @@
 module.exports = {
   flags: { DEV_SSR: false },
   plugins: [
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {

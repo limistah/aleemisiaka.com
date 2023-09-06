@@ -20,7 +20,7 @@ $ touch Makefile
 
 And add the below content:
 
-```make
+```makefile
 GOCMD ?= go
 GOBUILD = $(GOCMD) build
 GOCLEAN = $(GOCMD) clean

@@ -6,7 +6,14 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 export default () => {
   const { titlePhoto } = useStaticQuery(aboutQuery)
   return (
-    <Layout authorPhoto={titlePhoto}>
+    <Layout
+      authorPhoto={titlePhoto}
+      seo={{
+        title: "About Me",
+        description:
+          "I enjoy science, I LOVE technology. I respect God, he takes a top priority, I give as much as I can and live everyday as I would live my last day on earth.",
+      }}
+    >
       <div
         css={css({
           display: "grid",

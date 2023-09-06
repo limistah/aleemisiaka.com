@@ -7,14 +7,21 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const Posts = ({ location, posts, siteTitle, socialLinks }) => (
-  <Layout location={location} title={siteTitle} socialLinks={socialLinks}>
+  <Layout
+    seo={{
+      title: "Blog",
+      description: "The tricks of programming and software development trade",
+    }}
+    location={location}
+    title={siteTitle}
+    socialLinks={socialLinks}
+  >
     <main>
       {posts.map(({ node }) => {
         const title = node.title || node.slug
         const keywords = node.keywords || []
         return (
           <Fragment key={node.slug}>
-            <SEO title="Home" keywords={keywords} />
             <div
               css={css({
                 border: "1px solid slategray",

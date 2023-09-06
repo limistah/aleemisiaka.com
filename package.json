@@ -21,9 +21,11 @@
     "gatsby-plugin-sitemap": "4.6.0",
     "gatsby-plugin-theme-ui": "^0.2.43",
     "gatsby-remark-images": "^3.2.1",
+    "gatsby-remark-prismjs": "4.2.0",
     "gatsby-theme-blog": "^1.4.3",
     "gatsby-transformer-remark": "^2.7.1",
     "gatsby-transformer-sharp": "^2.4.2",
+    "prismjs": "^1.29.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0"

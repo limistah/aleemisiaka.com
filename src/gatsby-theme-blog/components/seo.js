@@ -38,7 +38,7 @@ function SEO({
   imgSrc,
   useTitleTemplate,
 }) {
-  const location = useLocation()
+  // const location = useLocation()
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -103,14 +103,14 @@ function SEO({
           property: `og:image`,
           content: ogImageSrc,
         },
-        {
-          property: `og:url`,
-          content: LIMISTAH_DOMAIN + location.pathname,
-        },
-        {
-          property: `twitter:site`,
-          content: LIMISTAH_DOMAIN + location.pathname,
-        },
+        // {
+        //   property: `og:url`,
+        //   content: LIMISTAH_DOMAIN + location.pathname,
+        // },
+        // {
+        //   property: `twitter:site`,
+        //   content: LIMISTAH_DOMAIN + location.pathname,
+        // },
         {
           property: `twitter:image`,
           content: ogImageSrc,

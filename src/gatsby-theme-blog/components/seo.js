@@ -9,8 +9,34 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import ogImg from "../../../content/assets/author.png"
 
-function SEO({ description, lang, meta, keywords, title }) {
+let structuredData = {
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  name: "Aleem Isiaka",
+  alternateName: "Software Engineer",
+  url: "https://aleemisiaka.dev/",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Lagos, Nigeria",
+    postalCode: "234001",
+    streetAddress: "Lagos",
+    email: "aleemisiaka@gmail.com",
+    faxNumber: "+234 812 025 4644",
+  },
+  sameAs: ["https://www.linkedin.com/in/limistah/"],
+}
+const LIMISTAH_DOMAIN = "https://aleemisiaka.dev"
+function SEO({
+  description,
+  lang,
+  meta,
+  keywords,
+  title,
+  imgSrc,
+  useTitleTemplate,
+}) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -25,15 +51,30 @@ function SEO({ description, lang, meta, keywords, title }) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  let finalSchemaMarkup = Object.assign({}, structuredData, schemaMarkup)
 
+  const metaDescription = description || site.siteMetadata.description
+  const defaultTitle = site.siteMetadata?.title
+  let ogImageSrc = imgSrc ? imgSrc : ogImg
+
+  if (!ogImageSrc.includes(LIMISTAH_DOMAIN)) {
+    ogImageSrc = LIMISTAH_DOMAIN + ogImageSrc
+  }
+
+  if (finalSchemaMarkup.image) {
+    finalSchemaMarkup.image[0] = finalSchemaMarkup.image[0] || ogImageSrc
+  } else {
+    finalSchemaMarkup.image = [ogImageSrc]
+  }
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title || "Page"}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={site.siteMetadata?.title}
+      titleTemplate={
+        useTitleTemplate && defaultTitle ? `%s | ${defaultTitle}` : null
+      }
       meta={[
         {
           name: `description`,
@@ -42,6 +83,11 @@ function SEO({ description, lang, meta, keywords, title }) {
         {
           property: `og:title`,
           content: title,
+        },
+
+        {
+          property: `og:site_name`,
+          content: "Aleem Isiaka",
         },
         {
           property: `og:description`,
@@ -52,19 +98,35 @@ function SEO({ description, lang, meta, keywords, title }) {
           content: `website`,
         },
         {
-          name: `twitter:card`,
+          property: `og:image`,
+          content: ogImageSrc,
+        },
+        {
+          property: `og:url`,
+          content: LIMISTAH_DOMAIN + location.pathname,
+        },
+        {
+          property: `twitter:site`,
+          content: LIMISTAH_DOMAIN + location.pathname,
+        },
+        {
+          property: `twitter:image`,
+          content: ogImageSrc,
+        },
+        {
+          property: `twitter:card`,
           content: `summary`,
         },
         {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          property: `twitter:creator`,
+          content: site.siteMetadata?.author || `Aleem Isiaka`,
         },
         {
-          name: `twitter:title`,
+          property: `twitter:title`,
           content: title,
         },
         {
-          name: `twitter:description`,
+          property: `twitter:description`,
           content: metaDescription,
         },
       ]
@@ -77,14 +139,27 @@ function SEO({ description, lang, meta, keywords, title }) {
             : []
         )
         .concat(meta)}
-    />
+    >
+      {finalSchemaMarkup && (
+        <script type="application/ld+json">
+          {/* Remove falsy values, which is useful in the case of the blog pages not needing the address field of the schema thereby setting it to undefined */}
+          {JSON.stringify(JSON.parse(JSON.stringify(finalSchemaMarkup)))}
+        </script>
+      )}
+    </Helmet>
   )
 }
 
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  keywords: ["Software Engineer", "Frontend Engineer", "Backend Engineer"],
+  keywords: [
+    "Software Engineer",
+    "Backend Engineer",
+    "DevOps Engineer",
+    "Cloud Engineer",
+    "Linux Admin",
+  ],
 }
 
 SEO.propTypes = {

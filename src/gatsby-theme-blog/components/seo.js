@@ -79,10 +79,6 @@ function SEO({
       }
       meta={[
         {
-          property: `title`,
-          content: title,
-        },
-        {
           name: `description`,
           content: metaDescription,
         },

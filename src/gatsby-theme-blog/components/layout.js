@@ -8,7 +8,7 @@ import { LocationContext } from "@gatsbyjs/reach-router"
 export default ({ children, ...props }) => (
   <Styled.root>
     <SEO
-      key={props.seo?.keywords}
+      keywords={props.seo?.keywords}
       title={props.seo?.title}
       description={props.seo?.description}
     />

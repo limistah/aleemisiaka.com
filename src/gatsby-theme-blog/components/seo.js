@@ -36,7 +36,7 @@ function SEO({
   keywords,
   title,
   imgSrc,
-  useTitleTemplate,
+  useTitleTemplate = true,
 }) {
   // const location = useLocation()
   const { site } = useStaticQuery(

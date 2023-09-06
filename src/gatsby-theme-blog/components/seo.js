@@ -56,7 +56,7 @@ function SEO({
   let finalSchemaMarkup = Object.assign({}, structuredData, schemaMarkup)
 
   const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const defaultTitle = title || site.siteMetadata?.title
   let ogImageSrc = imgSrc ? imgSrc : ogImg
 
   if (!ogImageSrc.includes(LIMISTAH_DOMAIN)) {

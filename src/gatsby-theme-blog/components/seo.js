@@ -32,6 +32,7 @@ function SEO({
   description,
   lang,
   meta,
+  schemaMarkup = {},
   keywords,
   title,
   imgSrc,

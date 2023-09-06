@@ -29,7 +29,11 @@ const Post = ({
       location={location}
       title={title}
       authorPhoto={titlePhoto}
-      seo={{ title: post.title, description: post.excerpt }}
+      seo={{
+        keywords: post.tags,
+        title: post.title,
+        description: post.excerpt,
+      }}
     >
       <main>
         <Styled.h1>{post.title}</Styled.h1>
@@ -48,7 +52,7 @@ const Post = ({
 
         <Styled.a
           css={css({ my: 2, mr: 3 })}
-          href={`https://github.com/limistah/aleemisiaka.com/blob/main/content/posts/${filename}.mdx`}
+          href={`https://github.com/limistah/aleemisiaka.com/blob/main/content/posts/${filename}.md`}
         >
           <svg
             css={css({ verticalAlign: "middle", mr: 1 })}

@@ -56,7 +56,7 @@ function SEO({
   let finalSchemaMarkup = Object.assign({}, structuredData, schemaMarkup)
 
   const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = title || site.siteMetadata?.title
+  const defaultTitle = site.siteMetadata?.title
   let ogImageSrc = imgSrc ? imgSrc : ogImg
 
   if (!ogImageSrc.includes(LIMISTAH_DOMAIN)) {
@@ -73,7 +73,7 @@ function SEO({
       htmlAttributes={{
         lang,
       }}
-      title={site.siteMetadata?.title}
+      title={title || defaultTitle}
       titleTemplate={
         useTitleTemplate && defaultTitle ? `%s | ${defaultTitle}` : null
       }

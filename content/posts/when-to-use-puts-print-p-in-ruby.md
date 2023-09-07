@@ -12,14 +12,14 @@ Usually, programming languages have methods for printing out variables. Ruby is 
 
 The way `print(var)` works is basically converting its value to a string by calling the `to_s` method on the object(everything is an object in Ruby) before printing the value and returning `nil` to its caller.
 
-```rb
+```ruby
 num = 123
 print(num) # -> 123 => nil
 ```
 
 The `print` method can be easily used for concatenating strings
 
-```rb
+```ruby
 num = 123
 name = "Aleem"
 
@@ -35,7 +35,7 @@ print "."
 
 Having `print` as the last operation in a method should be avoided if returning nil is not the desired value
 
-```rb
+```ruby
 def check_print 
 	print "This should print without a new line"
 end
@@ -53,7 +53,7 @@ val = check_point
 - _`puts` adds a new line character at the end of the printed value_
 
 
-```rb
+```ruby
 print "hello World"
 # -> Hello World
 # -> nil
@@ -67,7 +67,7 @@ puts "Hello world"
 - _`puts` prints each element in an array on a new line_
 
 
-```rb
+```ruby
 arr = [1,2,3,4,5,6]
     
 print arr
@@ -88,7 +88,7 @@ puts arr
 This method can be seen as a debugging tool. It prints more than just the value of a variable, it can print the memory, the object it belongs to. A good name befitting the `p` method is the variable _inspection_ method.
 
 
-```rb
+```ruby
 p STDERR
 # -> <IO:<STDERR>>
 

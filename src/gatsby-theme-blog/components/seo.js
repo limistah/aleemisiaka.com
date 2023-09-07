@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import ogImg from "../../../content/assets/author.png"
-import { useLocation } from "@gatsbyjs/reach-router"
+
 let structuredData = {
   "@context": "http://schema.org",
   "@type": "Organization",

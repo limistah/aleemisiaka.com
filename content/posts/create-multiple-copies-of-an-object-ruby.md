@@ -97,7 +97,7 @@ puts frz_copy_multi.frozen?
 
 This can be useful to create a copy of the same object that is not restricted either by the function caller or by developers that want to ensure that a method consistently works with _unfrozen_ objects.
 
-Shalom 🙇 
+Salut! 🙇 
 
 
 

@@ -35,7 +35,7 @@ Ruby ships with two methods for making copies of an object: the `dup` method and
 
 ### The `dup` method
 
-Take this multiverse object initialized below:
+Take this `multiverse` object initialized below:
 
 ```ruby
 multiverse = Object.new
@@ -51,15 +51,15 @@ end
 puts getObjectID(multiverse) == multiverse.object_id # true
 ```
 
-To avoid sending in the exact object by reference use the Object.dub method to create a copy of an object.
+To avoid sending in the exact object by reference use the `Object.dup` method to create a copy of an object.
 
 ```ruby
 puts getObjectID(multiverse.dup) == multiverse.object_id # false
 ```
 
-Now it is safer to pass the duplicate variable to the method, this would protect modifying multiverse from the getObjectID method if writing is not desired.
+Now, it is safer to pass the duplicated variable to a method. This would protect modifying `multiverse` object in the `getObjectID` method if the method is not meant to do any write operation on the object.
 
-> **Note**: If an object is frozen, the returned object will remain frozen after it has been duplicated
+> **Note**: If an object is frozen, the returned object will remain frozen, even after it has been duplicated.
 
 ```ruby
 dup_multi = multiverse.dup
@@ -79,9 +79,7 @@ puts frz_dup_multi.frozen?
 
 ### The `copy` method
 
-Copying an object is the same as duplicating an object, the only difference is that, when copying, if the object is frozen, the copied object remains unfrozen.
-
-This can be useful to create a copy that is not restricted either by the function caller or by developers that want to ensure that a method always work with unfrozen objects all the time.
+Copying an object is almost the same as _duplicating_ an object, the only difference is that, when copying, if the object is _frozen_, the copied object becomes _unfrozen_.
 
 ```ruby
 copy_multi = multiverse.dup
@@ -97,7 +95,7 @@ puts multiverse.frozen?
 puts frz_copy_multi.frozen? 
 ```
 
-
+This can be useful to create a copy of the same object that is not restricted either by the function caller or by developers that want to ensure that a method consistently works with _unfrozen_ objects.
 
 Shalom 🙇 
 

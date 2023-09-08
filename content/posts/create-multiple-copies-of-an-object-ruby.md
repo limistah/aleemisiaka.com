@@ -57,7 +57,7 @@ To avoid sending in the exact object by reference use the `Object.dup` method to
 puts getObjectID(multiverse.dup) == multiverse.object_id # false
 ```
 
-Now, it is safer to pass the duplicated variable to a method. This would protect modifying `multiverse` object in the `getObjectID` method if the method is not meant to do any write operation on the object.
+Now, it is safer to pass the duplicated variable to a method. This would protect modifying `multiverse` objects in the `getObjectID` method if the method is not meant to do any write operation on the object.
 
 > **Note**: If an object is frozen, the returned object will remain frozen, even after it has been duplicated.
 
@@ -95,7 +95,7 @@ puts multiverse.frozen?
 puts frz_copy_multi.frozen? 
 ```
 
-This can be useful to create a copy of the same object that is not restricted either by the function caller or by developers that want to ensure that a method consistently works with _unfrozen_ objects.
+This can be useful to create a copy of the same object that is not restricted either by the function caller or by developers who want to ensure that a method consistently works with _unfrozen_ objects.
 
 Salut! 🙇 
 

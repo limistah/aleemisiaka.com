@@ -9,7 +9,7 @@ Since everything is an object in Ruby having a functionality that can duplicate 
 
 Ruby ships with two methods for making copies of an object: the `dup` method and the `clone` method.
 
-> The reason why creating multiple copies of an object is because in Ruby, all variables hold a reference to an object. And in a case where a section of a code modifies an object which is not meant to be modified, it is ideal to make a copy of that object to be used in that section of the code. In some languages like C# and Java, this is called passing by value or dereferencing.
+> The reason why creating multiple copies of an object is because in Ruby, all variables hold a reference to an object. In a case where a section of a code modifies an object that is not meant to be modified, it is ideal to make a copy of that object to be used in that section of the code. 
 >
 > ```ruby
 > # initial value of str
@@ -27,7 +27,7 @@ Ruby ships with two methods for making copies of an object: the `dup` method and
 > puts str # outputs: this is a modified version of strVar
 > ```
 >
-> 
+> In some languages like C# and Java, this is called passing by value or dereferencing.
 
 
 
@@ -41,7 +41,7 @@ Take this multiverse object initialized below:
 multiverse = Object.new
 ```
 
-As seen above we can pass this to any method and any write operation would affect the object
+We can pass `multiverse` to any method that has a write operation, this would affect the object.
 
 ```ruby
 def getObjectID (obj)
@@ -57,9 +57,9 @@ To avoid sending in the exact object by reference use the Object.dub method to c
 puts getObjectID(multiverse.dup) == multiverse.object_id # false
 ```
 
-Now it is safer to write to the object inside of the getObjectID method, if writing is not desired.
+Now it is safer to pass the duplicate variable to the method, this would protect modifying multiverse from the getObjectID method if writing is not desired.
 
-Note: If an object is frozen, the returned object would remain frozen after it has been duplicated
+Note: If an object is frozen, the returned object will remain frozen after it has been duplicated
 
 ```ruby
 dup_multi = multiverse.dup
@@ -68,9 +68,11 @@ dup_multi.freeze
 
 frz_dup_multi = dup_multi.dup
 
-# multiverse is not frozen
-puts multiverse.frozen? # false original multiverse has not been frozen
-puts frz_dup_multi.frozen? # true The dup_multi was frozen before duplication
+# false original multiverse has not been frozen
+puts multiverse.frozen? 
+
+# true The dup_multi was frozen before duplication
+puts frz_dup_multi.frozen? 
 ```
 
 
@@ -88,9 +90,11 @@ copy_multi.freeze
 
 frz_copy_multi = copy_multi.dup
 
-# multiverse is not frozen
-puts multiverse.frozen? # false original multiverse has not been frozen
-puts frz_copy_multi.frozen? # false The copy_multi was frozen before duplication
+# false original multiverse has not been frozen
+puts multiverse.frozen?
+
+# false The copy_multi was frozen before duplication
+puts frz_copy_multi.frozen? 
 ```
 
 

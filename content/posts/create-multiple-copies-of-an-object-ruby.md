@@ -9,7 +9,7 @@ Since everything is an object in Ruby having a functionality that can duplicate 
 
 Ruby ships with two methods for making copies of an object: the `dup` method and the `clone` method.
 
-> The reason why creating multiple copies of an object is because in Ruby, all variables hold a reference to an object. In a case where a section of a code modifies an object that is not meant to be modified, it is ideal to make a copy of that object to be used in that section of the code. 
+> In Ruby, all variables hold a reference to an object. In a case where a section of a code modifies an object that is not meant to be modified, it is ideal to make a copy of that object to be used in that section of the code, protecting the integrity of the copied object.
 >
 > ```ruby
 > # initial value of str
@@ -59,7 +59,7 @@ puts getObjectID(multiverse.dup) == multiverse.object_id # false
 
 Now it is safer to pass the duplicate variable to the method, this would protect modifying multiverse from the getObjectID method if writing is not desired.
 
-Note: If an object is frozen, the returned object will remain frozen after it has been duplicated
+> **Note**: If an object is frozen, the returned object will remain frozen after it has been duplicated
 
 ```ruby
 dup_multi = multiverse.dup

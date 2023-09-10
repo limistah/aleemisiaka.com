@@ -114,9 +114,9 @@ export default ({ children, title, authorPhoto, author, ...props }) => {
             justifyContent: "flex-start",
           }}
         >
-          <NavLink to="/blog">Blog</NavLink>
+          <NavLink to="/blog/">Blog</NavLink>
 
-          <NavLink to="/work">Work</NavLink>
+          <NavLink to="/work/">Work</NavLink>
         </div>
         <div
           sx={{
@@ -126,7 +126,7 @@ export default ({ children, title, authorPhoto, author, ...props }) => {
             order: 2,
           }}
         >
-          <NavLink to="/about">About</NavLink>
+          <NavLink to="/about/">About</NavLink>
           <Switch
             aria-label="Toggle dark mode"
             checkedIcon={checkedIcon}

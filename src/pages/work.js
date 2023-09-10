@@ -50,7 +50,7 @@ export default () => {
         </Styled.a>
       </Styled.h3>
       A concise ReactJS library for{" "}
-      <Styled.a href="here.com" target="_blank">
+      <Styled.a href="https://www.here.com" target="_blank">
         Here Maps
       </Styled.a>
       <Styled.h4 css={css({ my: 1 })}>Tech Stack</Styled.h4>

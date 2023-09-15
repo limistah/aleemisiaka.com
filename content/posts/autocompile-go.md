@@ -3,7 +3,7 @@ title: Autocompile Go
 date: 2021-08-21
 tags: [go, autocompile, livereload]
 category: Go
-excerpt: Build and run your Go project autmatically while developing
+excerpt: Build and run your Go project automatically while developing
 ---
 
 First, install CompileDaemon:

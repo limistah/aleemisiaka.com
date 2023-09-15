@@ -2,7 +2,7 @@
 title: Creating multiple copies of objects in Ruby
 date: 2023-09-07
 tags: [Ruby, Objects, Duplicate, Software Development]
-excerpt: Duplicate an object in Ruby with dup, clone. Grasp the unique scenario that which each of the methods shines.
+excerpt: Duplicate an object in Ruby with dup, clone. Grasp the unique scenario in which each of the methods shines.
 ---
 
 Since everything is an object in Ruby having a functionality that can duplicate objects is not a bad idea.

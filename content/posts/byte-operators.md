@@ -3,7 +3,7 @@ title: What are Byte Operators?
 date: 2023-09-15
 tags: [byte, cs, computer-science, low-level]
 category: Core Concept
-excerpt: The concept Byte masking concept is in almost everything we use in our everyday lives. This post exposes the byte operators in-depth, with example of each kind of operator in programming.
+excerpt: The concept bit manipulation is in almost every tech that we use in our everyday lives. This post exposes the byte operators in-depth, with example of each kind of operator in programming.
 ---
 
 Part of the operators we get introduced to when learning to program is Bitwise Operators, examples are:
@@ -89,7 +89,8 @@ foo | bar // => 3 , 11 in binary
 What is happening here is in the way the bitwise OR operator works. It basically adds up the binary numbers, divides the result by 2, and record the remainder. Here if we do a right-to-left addition, 1+0 would give 1 divided by 2 gives zero but left with 1, and to the right we have the same operation we would end up with 1 as well. But, 11 is a binary representation of 3 in decimal numbers.
 
 ```bash
-   0 1
+// OR Operator
+  0 1
  | 1 0
  ------
    1 1
@@ -252,8 +253,8 @@ Take 255 base 10 in base 2 (11111111) for example. To shift this byte to the lef
 
 ```bash
 # Right shift
-255 << 4  => 240
-11111111 << 4 => 00001111
+255 >> 4  => 15
+11111111 >> 4 => 00001111
 ```
 
 

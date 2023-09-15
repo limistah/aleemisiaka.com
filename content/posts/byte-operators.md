@@ -3,7 +3,7 @@ title: What are Byte Operators?
 date: 2023-09-15
 tags: [byte, cs, computer-science, low-level]
 category: Core Concept
-excerpt: The concept bit manipulation is in almost every tech that we use in our everyday lives. This post exposes the byte operators in-depth, with example of each kind of operator in programming.
+excerpt: The concept of bit manipulation is in almost every tech that we use in our everyday lives. This post exposes the byte operators in-depth, with example of each kind of operator in programming.
 ---
 
 Part of the operators we get introduced to when learning to program is Bitwise Operators, examples are:
@@ -54,7 +54,9 @@ Transistors as electronic devices are very unique and useful, they behave like l
 
 After the advancement of transistors, the next phase is on how to make them useful for everyday usage(what technology is meant for), which is how to make transistors as a storage devices. But we can't store the Alphabet as on and off or 1 and 0, the byte was invented.
 
- A byte is a representation of a group of bits. Eight(8) bits would produce One(1) byte. Storing this on transistors means that transistors have to be grouped, and each group would have an identity. For example, if we have 32 transistors, that is 32 bits, and can be further converted to 32 / 8 = 4bytes, another example is if we have 32000 bits we would have 4000bytes. _The 4000bytes can be simplified by dividing by 1000 to create a kilo version, hence 4000byes/1000=4Kbytes_
+ A byte is a representation of a group of bits. Eight(8) bits would produce One(1) byte. Storing this on transistors means that transistors have to be grouped, and each group would have an identity. 
+
+For example, if we have 32 transistors, that is 32 bits, and can be further converted to 32 / 8 = 4bytes, another example is if we have 32000 bits we would have 4000bytes. _The 4000bytes can be simplified by dividing by 1000 to create a kilo version, hence 4000byes/1000=4Kbytes_
 
 #### Bytes to ASCII code
 
@@ -70,7 +72,9 @@ Representing a character on a transistor(in bits) becomes easier, _convert the c
 
 Since we can store numbers, characters, and symbols, we should be able to store words. Words are a group of letters and somehow letters, and alphabets, it is safe to use string, so a string of numbers, alphabets, and symbols. 
 
-This can be easily done by taking a consecutive byte(recall that this means 8 units of bits) until all the characters in the string are represented. For example, to represent _hello_ we would take the first byte and fill it with 01101000 (104 in ASCII) for `h`, then 01100101 (101 in ASCII) for `e`, then 01101100 (108 in ASCII) for `l`, then 01101100 (108 in ASCII) for `l`, and 01101111 (111) for `o`. 
+This can be easily done by taking a consecutive byte(recall that this means 8 units of bits) until all the characters in the string are represented.
+
+For example, to represent _hello_ we would take the first byte and fill it with 01101000 (104 in ASCII) for `h`, then 01100101 (101 in ASCII) for `e`, then 01101100 (108 in ASCII) for `l`, then 01101100 (108 in ASCII) for `l`, and 01101111 (111) for `o`. 
 
 Grouping this together it forms a string of 0s and 1s like this 
 
@@ -78,7 +82,9 @@ Grouping this together it forms a string of 0s and 1s like this
 
 ### What is byte switching?
 
-Byte switching is data manipulation at the bit level. What is happening is based on the kind of byte switching operation, we are instructing the transistor to switch to another state or maintain their state. For example, the binary code for the number 1 is  1, and for 2 is 10, and a bitwise OR operator on both numbers would give 3.
+Byte switching is data manipulation at the bit level. What is happening is based on the kind of byte switching operation, we are instructing the transistor to switch to another state or maintain their state. 
+
+For example, the binary code for the number 1 is  1, and for 2 is 10, and a bitwise OR operator on both numbers would give 3.
 
 ```js
 const foo = 1 // 01 in binary

@@ -131,36 +131,77 @@ As long as there is 1 in any of the values we are comparing, the result must ret
 This is the reverse of the bitwise OR operator. Instead of taking the remainder, we take the result of the division by 2.
 
 ```js
-//   0 1
-// + 1 0
-// ------
-//   0 0
+   0 1
+ + 1 0
+ ------
+   0 0
 
-// Taking the top right and the bottom right
-// 1 + 0 = 1
-// 1 / 2 = 0 remainder 1, take the result of the division as the answer
+ Taking the top right and the bottom right
+ 1 + 0 = 1
+ 1 / 2 = 0 remainder 1, take the result of the division as the answer
 
-// Taking the top left and the bottom left
-// 0 + 1 = 1
-// 1 / 2 = 0 remainder 1, take the result of the division as the answer
+Taking the top left and the bottom left
+ 0 + 1 = 1
+ 1 / 2 = 0 remainder 1, take the result of the division as the answer
 
-// -----
-// 00 in base 2 is 0 in base 10
-// 1 & 2 returns 0
+-----
+00 in base 2 is 0 in base 10
+1 & 2 returns 0
 ```
 
 A better way to understand this without the math
 
 ```go
-//   +-------------------------------+
-//   | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
-//   +---+---+---+---+---+---+---+---+
-//   | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
-//   +-------------------------------+
-// = | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-//   +-------------------------------+
+  +-------------------------------+
+  | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+  +---+---+---+---+---+---+---+---+
+  | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+  +-------------------------------+
+= | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+  +-------------------------------+
 ```
 
-As long as there is 0 in any of the columns we are comparing, the result must return 0.
+As long as there is a 0 in any of the columns we are comparing, the result must return 0.
+
+#### The Bitwise XOR Operator
+
+For the XOR operator, it checks if the remainder after the division of the two values is equal to 0, if it is, then the result is the same as the division (0, mostly for 0 + 1, 1 + 0 operations) , if the remainder after the division is 1 then the result is the remainder (0, mostly for 1 + 1 operations).
+
+```
+  1 0 1
++ 1 1 0
+-------
+  0 1 1
+
+Taking the top right and the bottom right
+1 + 0 = 1
+1 / 2 = 0 remainder 1, take the remainder as the answer since the result is 0
+
+Taking the top middle and the bottom middle
+0 + 1 = 1
+1 / 2 = 0 remainder 1, take the remainder as the answer since the result is 0
+
+Taking the top left and the bottom left
+1 + 1 = 2
+2 / 2 = 1 remainder 0, take the result of the division as the answer since the remainder is 0
+
+-----
+11 in base 2 is 3 in base 10
+1 | 2 returns 3
+```
+
+Without the arithmetic:
+
+```go
+  +-------------------------------+
+  | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 1 |
+  +---+---+---+---+---+---+---+---+
+^ | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 0 |
+  +-------------------------------+
+= | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 |
+  +-------------------------------+
+```
+
+
 
 Voila!

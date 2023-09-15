@@ -34,8 +34,8 @@ console.log(foo & bar)
 
 ```js
 const foo = 1, bar = 0
-console.log(foo & bar)
--> 0
+console.log(foo ^ bar)
+-> 1
 ```
 
 This seems pretty basic until you understand it is **_not_**.

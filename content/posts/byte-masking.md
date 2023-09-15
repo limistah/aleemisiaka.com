@@ -90,7 +90,7 @@ What is happening here is in the way the bitwise OR operator works. It basically
 
 ```bash
    0 1
- + 1 0
+ | 1 0
  ------
    1 1
 
@@ -119,6 +119,7 @@ As shown earlier, this operator returns the result of adding two bytes together.
 
 If the addition seems more arithmetic here is a better way to understand this:
 ```bash
+// OR Operator
    00000001
    00000010
  = 00000011
@@ -131,17 +132,18 @@ As long as there is 1 in any of the values we are comparing, the result must ret
 This is the reverse of the bitwise OR operator. Instead of taking the remainder, we take the result of the division by 2.
 
 ```bash
-   
+# 01 & 10
+
    0 1
- + 1 0
- ------
+ & 1 0
+ -------
    0 0
 
- Taking the top right and the bottom right
+# Taking the top right and the bottom right
  1 + 0 = 1
  1 / 2 = 0 remainder 1, take the result of the division as the answer
 
-Taking the top left and the bottom left
+# Taking the top left and the bottom left
  0 + 1 = 1
  1 / 2 = 0 remainder 1, take the result of the division as the answer
 
@@ -153,10 +155,12 @@ Taking the top left and the bottom left
 A better way to understand this without the math
 
 ```bash
+# AND Operator
+
   +-------------------------------+
   | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
   +---+---+---+---+---+---+---+---+
-  | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+& | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
   +-------------------------------+
 = | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
   +-------------------------------+
@@ -169,8 +173,10 @@ As long as there is a 0 in any of the columns we are comparing, the result must 
 For the XOR operator, it checks if the remainder after the division of the two values is equal to 0, if it is, then the result is the same as the division (0, mostly for 0 + 1, 1 + 0 operations) , if the remainder after the division is 1 then the result is the remainder (0, mostly for 1 + 1 operations).
 
 ```bash
+# XOR Operator 101 | 110
+
   1 0 1
-+ 1 1 0
+| 1 1 0
 -------
   0 1 1
 
@@ -194,7 +200,7 @@ Taking the top left and the bottom left
 Without the arithmetic:
 
 ```bash
- 
+# 10000101 ^ 00000110
   +-------------------------------+
   | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 1 |
   +---+---+---+---+---+---+---+---+
@@ -209,13 +215,23 @@ Without the arithmetic:
 This operator basically negates the value of each bit. If a bit is 0 it becomes 1 and if it is 1 it basically becomes 0. For example:
 
 ```bash
+# NOT Operator
   ~ 101
   -----
 =   010
 ```
 
-And 010 becomes `101`
+Also,
 
-### 
+```bash
+# NOT Operator
+  ~ 010
+  -----
+=   101
+```
+
+
+
+
 
 Voila!

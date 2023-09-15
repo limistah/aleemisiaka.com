@@ -88,23 +88,23 @@ foo | bar // => 3 , 11 in binary
 
 What is happening here is in the way the bitwise OR operator works. It basically adds up the binary numbers, divides the result by 2, and record the remainder. Here if we do a right-to-left addition, 1+0 would give 1 divided by 2 gives zero but left with 1, and to the right we have the same operation we would end up with 1 as well. But, 11 is a binary representation of 3 in decimal numbers.
 
-```bash
-   0 1
- + 1 0
- ------
-   1 1
+```js
+//   0 1
+// + 1 0
+// ------
+//   1 1
 
-# Taking the top right and the bottom right
- 1 + 0 = 1
- 1 / 2 = 0 remainder 1, take the remainder as the answer
+// Taking the top right and the bottom right
+// 1 + 0 = 1
+// 1 / 2 = 0 remainder 1, take the remainder as the answer
 
-# Taking the top left and the bottom left
-  0 + 1 = 1
-  1 / 2 = 0 remainder 1, take the remainder as the answer
+// Taking the top left and the bottom left
+// 0 + 1 = 1
+// 1 / 2 = 0 remainder 1, take the remainder as the answer
 
-#------
- 11 in base 2 is 3 in base 10
- 1 | 2 returns 3
+// -----
+// 11 in base 2 is 3 in base 10
+// 1 | 2 returns 3
 ```
 
 Be aware that 1 is not stored as 1 in computers but as `00000001` same for 2 it is rather stored as `00000010` for consistency against larger values.
@@ -118,10 +118,10 @@ To better understand byte masking operations, take a look at what each masking o
 As shown earlier, this operator returns the result of adding two bytes together. In the case of 1 and 2, we added 00000001 and 00000010 together to result into this 00000011.
 
 If the addition seems more arithmetic here is a better way to understand this:
-```bash
-   00000001
-   00000010
- = 00000011
+```go
+//   00000001
+//   00000010
+// = 00000011
 ```
 
 As long as there is 1 in any of the values we are comparing, the result must return 1.
@@ -130,8 +130,7 @@ As long as there is 1 in any of the values we are comparing, the result must ret
 
 This is the reverse of the bitwise OR operator. Instead of taking the remainder, we take the result of the division by 2.
 
-```bash
-   
+```js
    0 1
  + 1 0
  ------
@@ -152,7 +151,7 @@ Taking the top left and the bottom left
 
 A better way to understand this without the math
 
-```bash
+```go
   +-------------------------------+
   | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
   +---+---+---+---+---+---+---+---+
@@ -168,7 +167,7 @@ As long as there is a 0 in any of the columns we are comparing, the result must 
 
 For the XOR operator, it checks if the remainder after the division of the two values is equal to 0, if it is, then the result is the same as the division (0, mostly for 0 + 1, 1 + 0 operations) , if the remainder after the division is 1 then the result is the remainder (0, mostly for 1 + 1 operations).
 
-```bash
+```
   1 0 1
 + 1 1 0
 -------
@@ -193,8 +192,7 @@ Taking the top left and the bottom left
 
 Without the arithmetic:
 
-```bash
- 
+```go
   +-------------------------------+
   | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 1 |
   +---+---+---+---+---+---+---+---+
@@ -208,7 +206,7 @@ Without the arithmetic:
 
 This operator basically negates the value of each bit. If a bit is 0 it becomes 1 and if it is 1 it basically becomes 0. For example:
 
-```bash
+```
   ~ 101
   -----
 =   010

@@ -1,9 +1,9 @@
 ---
-title: What is Byte Masking and how useful is it?
-date: 2023-09-18
+title: What are Byte Operators?
+date: 2023-09-15
 tags: [byte, cs, computer-science, low-level]
 category: Core Concept
-excerpt: The concept Byte masking concept is in almost everything we use in our everyday lives. This post exposes the concept and how it is useful for a Systems Engineer
+excerpt: The concept Byte masking concept is in almost everything we use in our everyday lives. This post exposes the byte operators in-depth, with example of each kind of operator in programming.
 ---
 
 Part of the operators we get introduced to when learning to program is Bitwise Operators, examples are:
@@ -40,9 +40,9 @@ console.log(foo & bar)
 
 This seems pretty basic until you understand it is **_not_**.
 
-## What the heck is byte masking?
+## What the heck is byte switching?
 
-**Byte masking is a process of flipping the smallest unit of computing value called bits.**
+**Byte switching is a process of flipping the smallest unit of computing value called bits.**
 
 ### Some CS Background
 
@@ -70,15 +70,15 @@ Representing a character on a transistor(in bits) becomes easier, _convert the c
 
 Since we can store numbers, characters, and symbols, we should be able to store words. Words are a group of letters and somehow letters, and alphabets, it is safe to use string, so a string of numbers, alphabets, and symbols. 
 
-This can be easily done by taking a consecutive byte(recall that this means 8 units of bits) until all the characters in the string are represented. For example, to represent _hello_ we would take the first byte and fill it with 01101000 (104 in ASCII) for `h`, then 01100101 (101 in ASCII) for `e`, then 01101100 (108 in ASCII) for `l`, then 01001100 (076 in ASCII) for `l`, and 01101111 (111) for `o`. 
+This can be easily done by taking a consecutive byte(recall that this means 8 units of bits) until all the characters in the string are represented. For example, to represent _hello_ we would take the first byte and fill it with 01101000 (104 in ASCII) for `h`, then 01100101 (101 in ASCII) for `e`, then 01101100 (108 in ASCII) for `l`, then 01101100 (108 in ASCII) for `l`, and 01101111 (111) for `o`. 
 
 Grouping this together it forms a string of 0s and 1s like this 
 
-`0110100001100101011011000110110001101111` . 
+`01101000 01100101 01101100 01101100 01101111` . 
 
-### What is byte masking?
+### What is byte switching?
 
-Byte masking is data manipulation at the bit level. What is happening is based on the kind of byte masking operation, we are instructing the transistor to switch to another state or maintain their state. For example, the binary code for the number 1 is  1, and for 2 is 10, and a bitwise OR operator on both numbers would give 3.
+Byte switching is data manipulation at the bit level. What is happening is based on the kind of byte switching operation, we are instructing the transistor to switch to another state or maintain their state. For example, the binary code for the number 1 is  1, and for 2 is 10, and a bitwise OR operator on both numbers would give 3.
 
 ```js
 const foo = 1 // 01 in binary
@@ -109,9 +109,9 @@ What is happening here is in the way the bitwise OR operator works. It basically
 
 Be aware that 1 is not stored as 1 in computers but as `00000001` same for 2 it is rather stored as `00000010` for consistency against larger values.
 
-### Masking Operators
+### Bitwise Operators
 
-To better understand byte masking operations, take a look at what each masking operator would do for you.
+To better understand byte switching operations, take a look at what each operator would do for you.
 
 #### The Bitwise OR operator
 
@@ -230,12 +230,46 @@ Also,
 =   101
 ```
 
-#### Other operators
+#### The Bitwise LEFT SHIFT (`<<`) Operator
 
-There are still two more operators, the Left Shift Operator and the Right Shift Operator. Both tries to inverse(change to the other value)
+As the name suggests, this operator attempts to flip the value of a subset of byte to zero, like switching off a total amount of bytes from the right-most bit till a certain amount has been switched off to the left.
 
-#### 
+Take 255 base 10 in base 2 (11111111) for example. To shift this byte to the left by 4 (255 << 4) would produce 240 or (11111111  << 4) would produce 11110000, turning off all the bits from the right to the left until 4 bits have been turned off.
+
+```bash
+# Left shift
+255 << 4  => 240
+11111111 << 4 => 11110000
+```
 
 
 
-Voila!
+#### The Bitwise RIGHT SHIFT (`>>`) Operator
+
+Same as the left shift, in this case, it startes shifting from the left and move towards the right until the specified amount of bits have been shifted.
+
+Take 255 base 10 in base 2 (11111111) for example. To shift this byte to the left by 4 (255 >> 4) would produce 15 or (11111111  >> 4) would produce 00001111, turning off all the bits from the left to the right until 4 bits have been turned off.
+
+```bash
+# Right shift
+255 << 4  => 240
+11111111 << 4 => 00001111
+```
+
+
+
+### What more after these bit operations
+
+There is more to bit operations and manipulations than just shifting and switching on. For you to meaningfully read each texts on your screen, you can't imagine how many bit manipulation is happening.
+
+First is image manipulation. The image rendered on the screen is a large amount of bits converted to text and stored in a file. There are different types of the bit construction, hence the different image types. We can reduce the quality of an image by converting the file back to binary and manipulating the bits to a better value.
+
+Network communication is done via low level binary communication. Everything we call data from a network are transffered in binary in form of packets. There are different protocols for communicating and each protocol has a unique way of masking and unmasking binary information. This is useful to improve speed, ensure that information are trusted and follow a specific standard.
+
+### What more have you done with bit manipulation?
+
+Share with me: [email](mailto:aleemisiaka@gmail.com) or on [twitter](https://twitter.com/limistah)
+
+
+
+Adiós

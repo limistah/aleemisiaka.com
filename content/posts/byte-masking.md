@@ -230,7 +230,11 @@ Also,
 =   101
 ```
 
+#### Other operators
 
+There are still two more operators, the Left Shift Operator and the Right Shift Operator. Both tries to inverse(change to the other value)
+
+#### 
 
 
 

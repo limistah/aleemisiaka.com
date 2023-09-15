@@ -68,7 +68,13 @@ Representing a character on a transistor(in bits) becomes easier, _convert the c
 
 #### Representing words
 
-Since we can store numbers, characters, and symbols, we should be able to store words. Words are a group of letters and somehow letters, and alphabets, it is safe to use string, so a string of numbers, alphabets, and symbols. This can be easily done by taking a consecutive byte(recall that this means 8 units of bits) until all the characters in the string are represented. For example, to represent _hello_ we would take the first byte and fill it with 01101000 (104 in ASCII) for `h`, then 01100101 (101 in ASCII) for `e`, then 01101100 (108 in ASCII) for `l`, then 01001100 (076 in ASCII) for `l`, and 01101111 (111) for `o`. Grouping this together it forms a string of 0s and 1s like this `0110100001100101011011000110110001101111` . 
+Since we can store numbers, characters, and symbols, we should be able to store words. Words are a group of letters and somehow letters, and alphabets, it is safe to use string, so a string of numbers, alphabets, and symbols. 
+
+This can be easily done by taking a consecutive byte(recall that this means 8 units of bits) until all the characters in the string are represented. For example, to represent _hello_ we would take the first byte and fill it with 01101000 (104 in ASCII) for `h`, then 01100101 (101 in ASCII) for `e`, then 01101100 (108 in ASCII) for `l`, then 01001100 (076 in ASCII) for `l`, and 01101111 (111) for `o`. 
+
+Grouping this together it forms a string of 0s and 1s like this 
+
+`0110100001100101011011000110110001101111` . 
 
 ### What is byte masking?
 
@@ -80,12 +86,81 @@ const bar = 2 // 10 in binary
 foo | bar // => 3 , 11 in binary
 ```
 
-What is happening here is in the way the bitwise OR operator works. It basically adds up the binary numbers, divides the result by 2, and record the remainder. Here if we do a right-to-left addition, 1+0 would give 1 divided by 2 gives zero but we still have 1. to the right we have the same operation. and 11 is a binary representation of 3 in decimal numbers.
+What is happening here is in the way the bitwise OR operator works. It basically adds up the binary numbers, divides the result by 2, and record the remainder. Here if we do a right-to-left addition, 1+0 would give 1 divided by 2 gives zero but left with 1, and to the right we have the same operation we would end up with 1 as well. But, 11 is a binary representation of 3 in decimal numbers.
 
+```js
+//   0 1
+// + 1 0
+// ------
+//   1 1
 
+// Taking the top right and the bottom right
+// 1 + 0 = 1
+// 1 / 2 = 0 remainder 1, take the remainder as the answer
+
+// Taking the top left and the bottom left
+// 0 + 1 = 1
+// 1 / 2 = 0 remainder 1, take the remainder as the answer
+
+// -----
+// 11 in base 2 is 3 in base 10
+// 1 | 2 returns 3
+```
+
+Be aware that 1 is not stored as 1 in computers but as `00000001` same for 2 it is rather stored as `00000010` for consistency against larger values.
 
 ### Masking Operators
 
-To better understand byte masking, take a look at what each masking operator would do for you.
+To better understand byte masking operations, take a look at what each masking operator would do for you.
+
+#### The Bitwise OR operator
+
+As shown earlier, this operator returns the result of adding two bytes together. In the case of 1 and 2, we added 00000001 and 00000010 together to result into this 00000011.
+
+If the addition seems more arithmetic here is a better way to understand this:
+```go
+//   00000001
+//   00000010
+// = 00000011
+```
+
+As long as there is 1 in any of the values we are comparing, the result must return 1.
+
+#### The Bitwise AND Operator
+
+This is the reverse of the bitwise OR operator. Instead of taking the remainder, we take the result of the division by 2.
+
+```js
+//   0 1
+// + 1 0
+// ------
+//   0 0
+
+// Taking the top right and the bottom right
+// 1 + 0 = 1
+// 1 / 2 = 0 remainder 1, take the result of the division as the answer
+
+// Taking the top left and the bottom left
+// 0 + 1 = 1
+// 1 / 2 = 0 remainder 1, take the result of the division as the answer
+
+// -----
+// 00 in base 2 is 0 in base 10
+// 1 & 2 returns 0
+```
+
+A better way to understand this without the math
+
+```go
+//   +-------------------------------+
+//   | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+//   +---+---+---+---+---+---+---+---+
+//   | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+//   +-------------------------------+
+// = | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+//   +-------------------------------+
+```
+
+As long as there is 0 in any of the columns we are comparing, the result must return 0.
 
 Voila!

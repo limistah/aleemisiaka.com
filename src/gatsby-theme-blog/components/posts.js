@@ -10,7 +10,7 @@ const Posts = ({ location, posts, siteTitle, socialLinks }) => (
   <Layout
     seo={{
       title: "Blog",
-      description: "The tricks of programming and software development trade",
+      description: "The tricks of programming and software engineering trade",
     }}
     location={location}
     title={siteTitle}
@@ -40,7 +40,7 @@ const Posts = ({ location, posts, siteTitle, socialLinks }) => (
                   css={css({
                     textDecoration: `none`,
                   })}
-                  to={node.slug}
+                  to={`${node.slug}/`}
                 >
                   {title}
                 </Styled.a>

@@ -11,6 +11,7 @@ export default ({ children, ...props }) => (
       keywords={props.seo?.keywords}
       title={props.seo?.title}
       description={props.seo?.description}
+      url={props.seo.url}
     />
 
     <Header {...props} />

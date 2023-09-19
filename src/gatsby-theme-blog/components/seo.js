@@ -35,6 +35,7 @@ function SEO({
   schemaMarkup = {},
   keywords,
   title,
+  url = "/",
   imgSrc,
   useTitleTemplate = true,
 }) {
@@ -103,10 +104,10 @@ function SEO({
           property: `og:image`,
           content: ogImageSrc,
         },
-        // {
-        //   property: `og:url`,
-        //   content: LIMISTAH_DOMAIN + location.pathname,
-        // },
+        {
+          property: `og:url`,
+          content: LIMISTAH_DOMAIN + url,
+        },
         // {
         //   property: `twitter:site`,
         //   content: LIMISTAH_DOMAIN + location.pathname,

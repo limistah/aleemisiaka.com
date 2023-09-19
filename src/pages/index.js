@@ -16,7 +16,7 @@ const Index = () => {
   } = data
   return (
     <Layout
-      seo={{ title: "Home", description: description }}
+      seo={{ title: "Home", description: description, url: "/"}}
       authorPhoto={authorPhoto}
     >
       <Styled.div css={css({ textAlign: "center" })}>

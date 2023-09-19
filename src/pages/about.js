@@ -10,6 +10,7 @@ export default () => {
       authorPhoto={titlePhoto}
       seo={{
         title: "About Me",
+        url: "/about/",
         description:
           "I enjoy science, I LOVE technology. I respect God, he takes a top priority, I give as much as I can and live everyday as I would live my last day on earth.",
       }}

@@ -7,7 +7,11 @@ export default () => {
   const { titlePhoto } = useStaticQuery(workQuery)
 
   return (
-    <Layout authorPhoto={titlePhoto}>
+    <Layout authorPhoto={titlePhoto} seo={{
+      url: "/work/",
+      description: "Awesomeness by Aleem Isiaka",
+      title: "Handi-Work"
+    }}>
       <Styled.h2>Work/Projects</Styled.h2>
       <Styled.hr />
       <Styled.h3>

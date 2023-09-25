@@ -3,7 +3,7 @@ title: What are Byte Operators?
 date: 2023-09-15
 tags: [byte, cs, computer-science, low-level]
 category: Core Concept
-excerpt: The concept of bit manipulation is in almost every tech that we use in our everyday lives. This post exposes the byte operators in-depth, with example of each kind of operator in programming.
+excerpt: The concept of bit manipulation is in almost every tech that we use in our everyday lives. This post exposes the byte operators in-depth, with examples of each kind of operator in programming.
 ---
 
 Part of the operators we get introduced to when learning to program is Bitwise Operators, examples are:

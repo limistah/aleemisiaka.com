@@ -7,8 +7,8 @@ excerpt: The idea of byte masking helps us achieve abstractions from the binary 
 
 ---
 
-# Byte masking
+Byte masking is a deep CS concept reserved for the nerds. Here we will attempt to dissect the topic and provide a relatable experience for everyone. Welcome...
 
 
 
-Adios
+[Adios](https://translate.google.com/?hl=en&sl=hi&tl=en&text=adios&op=translate)

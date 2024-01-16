@@ -3,7 +3,7 @@ title: Ruby - if statement?
 date: 2024-01-15
 tags: [programming, ruby ]
 category: Programming
-excerpt: The concept of bit manipulation is in almost every tech that we use in our everyday lives. This post exposes the byte operators in-depth, with examples of each kind of operator in programming.
+excerpt: If statement the ruby way.
 ---
 
 In Ruby, the `if` statement looks like this

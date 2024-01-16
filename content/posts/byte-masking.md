@@ -17,13 +17,19 @@ Masking is a process of concealing information. Take for example having a string
 
 A byte is a group of bits(1 and 0) usually eight in number. Such that `00000000` becomes a byte but the individual zeros are known as bits.
 
-In CS bitmasking is a process of taking manipulating the bits of computational data. For example, converting `00000000` to `01010101`. In CS, it mostly denotes what bit you want to keep, and what bit you wish to clear. in our case, we have divided the byte into pairs and cleared the first bit `00|00|00|00` => `01|01|01|01`.
+In CS bitmasking is a process of manipulating the bits of computational data. For example, converting `00000000` to `01010101`. In CS, it mostly denotes what bit you want to keep, and what bit you wish to clear. in our case, we have divided the byte into pairs and cleared the first bit `00|00|00|00` => `01|01|01|01`.
 
-Masking Operators
+### Masking Operators
+
+Masking bits is done by the use of masking operators, taking from the byte operators:
+
+- [The Bitwise OR](/byte-operators#)  `|` (a single pipe character)
+- The Bitwise AND `&` (a single ampersand character)
+- The Bitwise XOR `^` (a single caret character)
 
 Basic Masking operations
 
-A real life use case of masking
+A real-life use case of masking
 
 How masking helps our daily lives
 
